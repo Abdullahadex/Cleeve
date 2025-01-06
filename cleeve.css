@@ -1,0 +1,528 @@
+@import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
+
+body {
+  font-family: 'Patrick Hand', cursive, sans-serif;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+.header {
+  border-bottom: 2px solid #000;
+  background: transparent;
+  box-shadow: none;
+  padding: 15px 0;
+  width: 100%;
+}
+
+.nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: transparent;
+  padding: 10px;
+  border-bottom: 5px solid #b0b0b0;
+  position: relative;
+}
+
+.logo {
+  font-family: "Architects Daughter", cursive;
+  font-size: 48px;
+  text-decoration: none;
+  color: #333;
+  font-weight: bold;
+  letter-spacing: 2px;
+  padding: 10px 20px;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #333;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.logo:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-links {
+  display: flex;
+  gap: 30px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #555;
+  margin-left: 30px;
+  font-size: 18px;
+  transition: all 0.3s;
+  position: relative;
+  padding: 5px 10px;
+}
+
+.nav-links a:before {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #000;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nav-links a:hover:before {
+  transform: scaleX(1);
+}
+
+.nav-links a:hover {
+  transform: translateY(-2px);
+  color: #000;
+}
+
+.main-content {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.main-content:before {
+  content: "★";
+  position: absolute;
+  font-size: 24px;
+  color: #000;
+  opacity: 0.1;
+  top: 50px;
+  left: 20px;
+}
+
+.main-content:after {
+  content: "♥";
+  position: absolute;
+  font-size: 24px;
+  color: #000;
+  opacity: 0.1;
+  bottom: 50px;
+  right: 20px;
+}
+
+.category-title {
+  font-family: "Architects Daughter", cursive;
+  border-bottom: 3px dashed #000;
+  font-size: 22px;
+  font-weight: 400;
+  margin-bottom: 30px;
+  padding-bottom: 10px;
+  position: relative;
+}
+
+.category-title:after {
+  content: "✿";
+  position: absolute;
+  right: 0;
+  bottom: -10px;
+  font-size: 24px;
+}
+
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 30px;
+  margin-bottom: 60px;
+}
+
+.product-card {
+  border: 3px solid #000;
+  border-radius: 15px;
+  background: rgba(255, 255, 255, 0.95);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.product-card:before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  left: -8px;
+  right: -8px;
+  bottom: -8px;
+  border: 2px dashed #000;
+  border-radius: 20px;
+  z-index: -1;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.product-card:hover:before {
+  opacity: 1;
+}
+
+.product-card:hover {
+  transform: translateY(-8px) rotate(1deg);
+}
+
+.product-image {
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 13px 13px 0 0;
+}
+
+.product-info {
+  padding: 15px;
+}
+
+.product-name {
+  font-size: 16px;
+  margin: 0 0 5px 0;
+}
+
+.product-price {
+  background: #fff;
+  border: 2px solid #000;
+  border-radius: 15px;
+  padding: 5px 10px;
+  display: inline-block;
+  transform: rotate(-2deg);
+  position: relative;
+  margin: 10px 0;
+}
+
+.product-price:before {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 10px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 2px solid #000;
+  background: #fff;
+}
+
+.add-to-cart {
+  border: 3px solid #000;
+  background: #fff;
+  color: #000;
+  border-radius: 25px;
+  font-family: "Patrick Hand", cursive;
+  padding: 10px 15px;
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.add-to-cart:before {
+  content: "✎";
+  position: absolute;
+  left: 15px;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.add-to-cart:hover {
+  padding-left: 35px;
+  background: #000;
+  color: #fff;
+  transform: translateY(-3px);
+}
+
+.add-to-cart:hover:before {
+  opacity: 1;
+}
+
+.filters {
+  margin-bottom: 30px;
+  display: flex;
+  gap: 15px;
+}
+
+.filter-button {
+  border: 3px solid #000;
+  border-radius: 25px;
+  font-family: "Patrick Hand", cursive;
+  position: relative;
+  background: #fff;
+  padding: 12px 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+.filter-button:hover {
+  transform: translateY(-3px) rotate(-2deg);
+  box-shadow: 3px 3px 0 #000;
+}
+
+footer {
+  background: white;
+  padding: 40px 20px;
+  margin-top: 60px;
+  border-top: 1px solid #eee;
+  text-align: center;
+  color: #666;
+}
+
+.slideshow-container {
+  position: relative;
+  width: 100vw;
+  height: 600px;
+  overflow: hidden;
+  margin: 0;
+  padding: 0;
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  border: none;
+  border-top: 3px solid #000;
+  border-bottom: 3px solid #000;
+  border-radius: 0;
+}
+
+.slides {
+  display: none;
+  width: 100%;
+  height: 100%;
+}
+
+.slides img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide-text {
+  font-family: "Architects Daughter", cursive;
+  font-size: 3em;
+  color: #fff;
+  text-shadow: 3px 3px 0 #000;
+  background: rgba(0, 0, 0, 0.3);
+  border-top: 2px dashed #fff;
+  border-bottom: 2px dashed #fff;
+  position: absolute;
+  bottom: 50px;
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+}
+
+.slideshow-dots {
+  position: absolute;
+  bottom: 20px;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
+
+.dot {
+  height: 12px;
+  width: 12px;
+  margin: 0 5px;
+  background-color: #fff;
+  border: 2px solid #000;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.dot:hover {
+  transform: scale(1.2);
+}
+
+.active-dot {
+  background-color: #000;
+  transform: scale(1.2);
+}
+
+.fade {
+  animation: fade 1.5s ease-in-out;
+}
+
+@keyframes fade {
+  from {
+    opacity: 0.4;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.footer-doodles {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin: 1rem 0;
+}
+
+.doodle {
+  font-size: 24px;
+  opacity: 0.6;
+  transition: transform 0.3s ease;
+  color: #333;
+}
+
+.doodle:hover {
+  transform: scale(1.2) rotate(15deg);
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .nav {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .nav-links {
+    margin-top: 10px;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .nav-links a {
+    padding: 10px;
+    font-size: 1.5em;
+  }
+
+  .nav a {
+    padding: 10px;
+    font-size: 1.5em;
+  }
+
+  .search-bar {
+    width: 80%;
+    margin-top: 10px;
+  }
+
+  .slideshow-container {
+    height: 400px;
+  }
+
+  .slide-text {
+    font-size: 2em;
+  }
+
+  .filters {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+body {
+  font-family: Arial, sans-serif;
+}
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  padding: 10px;
+  border-bottom: 5px solid #b0b0b0;
+  position: relative;
+}
+
+.nav a {
+  color: #333;
+  padding: 14px 20px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s;
+  font-size: 1.2em;
+}
+
+.nav a:hover {
+  color: #b0b0b0;
+  transform: scale(1.1);
+}
+
+.search-bar {
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px dashed #b0b0b0;
+}
+
+.footer-doodles {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.doodle {
+  font-size: 24px;
+  margin: 0 5px;
+  color: #b0b0b0;
+}
+
+.nav::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('path/to/doodle-background.png');
+  background-size: cover;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+.product-card button {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 2px solid #b0b0b0;
+  border-radius: 25px;
+  padding: 10px 15px;
+  font-family: 'Patrick Hand', cursive;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.product-card button:hover {
+  background-color: #b0b0b0;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+.product-card button::before,
+.product-card button::after {
+  content: none;
+}
+
+/* Style for the logo */
+.nav .logo {
+  font-size: 2em; /* Increase the font size for the logo */
+  font-weight: bold; /* Make the logo bold */
+  color: #333; /* Ensure the logo color matches the text */
+  text-decoration: none; /* Remove underline */
+  margin-right: auto; /* Push the logo to the left */
+}
