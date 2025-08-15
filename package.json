@@ -1,0 +1,23 @@
+{
+  "name": "cleeve-site",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Cleeve static site served via Node.js/Express",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "node -e \"console.log('Nothing to build: static assets only.')\""
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "dependencies": {
+    "compression": "^1.7.4",
+    "express": "^4.19.2",
+    "node-fetch": "^3.3.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.0"
+  }
+}
