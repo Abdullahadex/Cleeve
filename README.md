@@ -1,181 +1,36 @@
-# Cleeve - Fashion for Everyone
-
-A modern, responsive e-commerce website built with HTML, CSS, JavaScript, and Node.js/Express.
-
-## Features
-
-- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile devices
-- **Product Catalog**: Browse through Kids, Teens, and Young Adults collections
-- **Shopping Cart**: Add items to cart with real-time count updates
-- **Modern UI**: Clean, minimalist design with smooth animations
-- **Node.js Backend**: Express server with compression and static file serving
-- **Interactive Elements**: Slideshow, product cards, and dynamic cart functionality
-
-## Tech Stack
-
-- **Frontend**: HTML5, CSS3, Vanilla JavaScript
-- **Backend**: Node.js, Express.js
-- **Styling**: Custom CSS with responsive grid layouts
-- **Icons**: Font Awesome
-- **Fonts**: Patrick Hand, Architects Daughter (Google Fonts)
-
-## Project Structure
-
-```
-Cleeve-main/
-├── index.html          # Home page with product catalog
-├── cart.html           # Shopping cart page
-├── cleeve.css          # Main stylesheet
-├── cart.css            # Cart-specific styles
-├── cleeve.js           # Main JavaScript functionality
-├── cart.js             # Cart-specific JavaScript
-├── server.js           # Express server
-├── package.json        # Node.js dependencies
-├── logo.jpeg           # Site logo
-└── README.md           # This file
-```
+This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
 
-### Prerequisites
-
-- Node.js (version 16 or higher)
-- npm (comes with Node.js)
-
-### Installation
-
-1. **Clone the repository**
-
-   ```bash
-   git clone <your-repo-url>
-   cd Cleeve-main
-   ```
-
-2. **Install dependencies**
-
-   ```bash
-   npm install
-   ```
-
-3. **Start the development server**
-
-   ```bash
-   npm start
-   ```
-
-4. **Open your browser**
-   Navigate to `http://localhost:3000`
-
-### Available Scripts
-
-- `npm start` - Start the production server
-- `npm run dev` - Start the development server with auto-reload
-- `npm run build` - Build script (no-op for static assets)
-
-## Features in Detail
-
-### Home Page (`index.html`)
-
-- Hero section with call-to-action
-- Product grid organized by age categories
-- Interactive slideshow
-- Search functionality
-- Shopping cart with live count
-
-### Cart Page (`cart.html`)
-
-- Display cart items with remove functionality
-- Real-time total calculation
-- Checkout button
-- Responsive layout
-
-### Navigation
-
-- Sticky header with logo
-- Category navigation
-- Search bar
-- Cart icon with item count
-
-### Product Cards
-
-- Product images with hover effects
-- Add to cart functionality
-- Quick view option
-- Price display
-
-## Customization
-
-### Adding Products
-
-Edit `index.html` to add new product cards in the appropriate section:
-
-```html
-<div class="product-card">
-  <img src="product-image.jpg" alt="Product Name" class="product-image" />
-  <div class="product-info">
-    <h3 class="product-name">Product Name</h3>
-    <p class="product-price">$XX.XX</p>
-    <button class="add-to-cart">Add to Cart</button>
-    <button class="quick-view">Quick View</button>
-  </div>
-</div>
-```
-
-### Styling
-
-- Main styles: `cleeve.css`
-- Cart-specific styles: `cart.css`
-- Responsive breakpoints included
-- Custom CSS variables for easy theming
-
-### Logo
-
-Replace `logo.jpeg` with your own logo file (recommended size: 80px height)
-
-## Deployment
-
-### Local Development
+First, run the development server:
 
 ```bash
 npm run dev
+# or
+yarn dev
+# or
+pnpm dev
+# or
+bun dev
 ```
 
-### Production
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-```bash
-npm start
-```
+You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
-### Environment Variables (Optional)
+This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
-For Instagram integration (currently disabled):
+## Learn More
 
-- `IG_TOKEN`: Instagram Graph API token
-- `IG_USER_ID`: Instagram user ID
+To learn more about Next.js, take a look at the following resources:
 
-## Browser Support
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
-- Chrome (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
-## Contributing
+## Deploy on Vercel
 
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Test thoroughly
-5. Submit a pull request
+The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
-## License
-
-This project is licensed under the MIT License.
-
-## Contact
-
-For questions or support, please open an issue on GitHub.
-
----
-
-**Cleeve** - Fashion for Everyone
+Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
