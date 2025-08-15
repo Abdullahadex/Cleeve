@@ -45,17 +45,20 @@ Cleeve-main/
 ### Installation
 
 1. **Clone the repository**
+
    ```bash
    git clone <your-repo-url>
    cd Cleeve-main
    ```
 
 2. **Install dependencies**
+
    ```bash
    npm install
    ```
 
 3. **Start the development server**
+
    ```bash
    npm start
    ```
@@ -72,6 +75,7 @@ Cleeve-main/
 ## Features in Detail
 
 ### Home Page (`index.html`)
+
 - Hero section with call-to-action
 - Product grid organized by age categories
 - Interactive slideshow
@@ -79,18 +83,21 @@ Cleeve-main/
 - Shopping cart with live count
 
 ### Cart Page (`cart.html`)
+
 - Display cart items with remove functionality
 - Real-time total calculation
 - Checkout button
 - Responsive layout
 
 ### Navigation
+
 - Sticky header with logo
 - Category navigation
 - Search bar
 - Cart icon with item count
 
 ### Product Cards
+
 - Product images with hover effects
 - Add to cart functionality
 - Quick view option
@@ -99,6 +106,7 @@ Cleeve-main/
 ## Customization
 
 ### Adding Products
+
 Edit `index.html` to add new product cards in the appropriate section:
 
 ```html
@@ -114,28 +122,34 @@ Edit `index.html` to add new product cards in the appropriate section:
 ```
 
 ### Styling
+
 - Main styles: `cleeve.css`
 - Cart-specific styles: `cart.css`
 - Responsive breakpoints included
 - Custom CSS variables for easy theming
 
 ### Logo
+
 Replace `logo.jpeg` with your own logo file (recommended size: 80px height)
 
 ## Deployment
 
 ### Local Development
+
 ```bash
 npm run dev
 ```
 
 ### Production
+
 ```bash
 npm start
 ```
 
 ### Environment Variables (Optional)
+
 For Instagram integration (currently disabled):
+
 - `IG_TOKEN`: Instagram Graph API token
 - `IG_USER_ID`: Instagram user ID
 
