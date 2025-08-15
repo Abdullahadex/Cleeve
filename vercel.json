@@ -1,0 +1,7 @@
+{
+  "buildCommand": "cd cleeve-nextjs && npm install && npm run build",
+  "outputDirectory": "cleeve-nextjs/.next",
+  "installCommand": "cd cleeve-nextjs && npm install",
+  "framework": "nextjs",
+  "rootDirectory": "cleeve-nextjs"
+}
