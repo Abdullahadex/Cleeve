@@ -1,13 +1,3 @@
-.ig-embed-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
-}
-
-.ig-embed {
-  width: 100%;
-  max-width: 540px;
-}
 @import url("https://fonts.googleapis.com/css2?family=Patrick+Hand&display=swap");
 
 body {
@@ -505,6 +495,192 @@ footer {
   opacity: 1;
 }
 
+.search-bar {
+  padding: 5px;
+  border-radius: 5px;
+  border: 2px dashed #b0b0b0;
+}
+
+.cart-icon {
+  font-size: 1.2em;
+}
+
+.cart-icon a {
+  text-decoration: none;
+  color: #333;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.quick-view,
+.wishlist {
+  background-color: #f0f0f0;
+  color: #333;
+  border: 2px solid #b0b0b0;
+  border-radius: 25px;
+  padding: 10px 15px;
+  font-family: "Patrick Hand", cursive;
+  font-size: 1em;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.quick-view:hover,
+.wishlist:hover {
+  background-color: #b0b0b0;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* Remove wishlist buttons across the site */
+.wishlist {
+  display: none !important;
+}
+
+/* Cart page styles */
+.cart-header {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  border-bottom: 1px solid #eaeaea;
+  z-index: 10;
+}
+
+.cart-nav {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 12px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  text-decoration: none;
+  color: #333;
+}
+
+.page-title {
+  font-size: 2em;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.cart-container {
+  max-width: 1100px;
+  margin: 24px auto;
+  padding: 0 20px;
+}
+
+.cart-layout {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.cart-items {
+  display: grid;
+  gap: 12px;
+}
+
+.cart-item {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cart-item h3 {
+  margin: 0;
+  color: #333;
+}
+
+.cart-item p {
+  margin: 0;
+  color: #555;
+}
+
+.remove-item {
+  background-color: #fff;
+  color: #111;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.remove-item:hover {
+  background-color: #111;
+  color: #fff;
+  border-color: #111;
+}
+
+.cart-summary {
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 12px;
+  padding: 16px;
+  position: sticky;
+  top: 88px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.02);
+}
+
+#checkout-button {
+  background-color: #111;
+  color: #fff;
+  border: 1px solid #111;
+  border-radius: 10px;
+  padding: 12px 16px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-top: 10px;
+  width: 100%;
+  transition: background-color 0.2s ease;
+}
+
+#checkout-button:hover {
+  background-color: #000;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.icon {
+  font-size: 36px;
+  color: #007bff;
+}
+
+.home-button {
+  text-decoration: none;
+  color: #111;
+  font-weight: 600;
+  padding: 8px 14px;
+  border: 1px solid #e0e0e0;
+  border-radius: 24px;
+  background-color: transparent;
+  transition: all 0.2s ease;
+}
+
+.home-button:hover {
+  background-color: #111;
+  color: #fff;
+  border-color: #111;
+}
+
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
@@ -549,101 +725,13 @@ footer {
   .product-grid {
     grid-template-columns: repeat(2, 1fr);
   }
-}
 
-body {
-  font-family: Arial, sans-serif;
-}
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
 
-.nav {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: transparent;
-  padding: 10px;
-  border-bottom: 5px solid #b0b0b0;
-  position: relative;
-}
-
-.nav a {
-  color: #333;
-  padding: 14px 20px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: color 0.3s;
-  font-size: 1.2em;
-}
-
-.nav a:hover {
-  color: #b0b0b0;
-  transform: scale(1.1);
-}
-
-.search-bar {
-  padding: 5px;
-  border-radius: 5px;
-  border: 2px dashed #b0b0b0;
-}
-
-.footer-doodles {
-  display: flex;
-  justify-content: center;
-  margin: 10px 0;
-}
-
-.doodle {
-  font-size: 24px;
-  margin: 0 5px;
-  color: #b0b0b0;
-}
-
-.nav::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url("path/to/doodle-background.png");
-  background-size: cover;
-  opacity: 0.3;
-  z-index: -1;
-}
-
-.product-card button {
-  background-color: #f0f0f0;
-  color: #333;
-  border: 2px solid #b0b0b0;
-  border-radius: 25px;
-  padding: 10px 15px;
-  font-family: "Patrick Hand", cursive;
-  font-size: 1em;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  position: relative;
-}
-
-.product-card button:hover {
-  background-color: #b0b0b0;
-  color: #fff;
-  transform: scale(1.05);
-}
-
-.product-card button::before,
-.product-card button::after {
-  content: none;
-}
-
-/* Style for the logo */
-.nav .logo {
-  font-size: 2em; /* Increase the font size for the logo */
-  font-weight: bold; /* Make the logo bold */
-  color: #333; /* Ensure the logo color matches the text */
-  text-decoration: none; /* Remove underline */
-  margin-right: auto; /* Push the logo to the left */
-}
-
-/* Remove wishlist buttons across the site */
-.wishlist {
-  display: none !important;
+  .cart-summary {
+    position: static;
+    margin-top: 16px;
+  }
 }
