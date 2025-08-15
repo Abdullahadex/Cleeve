@@ -1,0 +1,7 @@
+[33mcommit ceeb2a46c898a8db652c2a6a3e2cefdfd6ed718c[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Abdullahadex <adexadebayo34@gmail.com>
+Date:   Fri Aug 15 17:33:34 2025 +0100
+
+    Add Vercel deployment configuration and fix package.json
+
+A	vercel.json
