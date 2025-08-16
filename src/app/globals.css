@@ -713,113 +713,151 @@ footer {
   }
 }
 
-/* Mobile Navigation Styles */
-.mobile-menu-toggle {
-  display: none;
-  flex-direction: column;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 8px;
-  z-index: 1001;
-}
-
-.hamburger-line {
-  width: 25px;
-  height: 3px;
-  background-color: #333;
-  margin: 3px 0;
-  transition: 0.3s;
-  transform-origin: center;
-}
-
-.hamburger-line.open:nth-child(1) {
-  transform: rotate(45deg) translate(6px, 6px);
-}
-
-.hamburger-line.open:nth-child(2) {
-  opacity: 0;
-}
-
-.hamburger-line.open:nth-child(3) {
-  transform: rotate(-45deg) translate(6px, -6px);
-}
-
-.mobile-nav-dropdown {
-  position: absolute;
-  top: 100%;
-  left: 0;
-  right: 0;
-  background: white;
-  border-top: 2px solid #000;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  transform: translateY(-100%);
-  opacity: 0;
-  visibility: hidden;
-  transition: all 0.3s ease;
-  z-index: 999;
-}
-
-.mobile-nav-dropdown.open {
-  transform: translateY(0);
-  opacity: 1;
-  visibility: visible;
-}
-
-.mobile-nav-content {
-  padding: 20px;
+/* Desktop and Mobile Navigation Separation */
+.desktop-only {
   display: flex;
-  flex-direction: column;
-  gap: 15px;
 }
 
-.mobile-nav-content a {
+.mobile-only {
+  display: none;
+}
+
+/* Mobile Navigation Styles */
+.mobile-nav {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+.mobile-logo-image {
+  border-radius: 8px;
+}
+
+.mobile-nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  flex: 1;
+  justify-content: center;
+}
+
+.mobile-nav-links a {
+  text-decoration: none;
+  color: #555;
+  font-size: 16px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.mobile-nav-links a:hover {
+  color: #000;
+  background: #f5f5f5;
+  transform: translateY(-1px);
+}
+
+.mobile-actions {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+}
+
+.mobile-search-toggle {
+  background: none;
+  border: 2px solid #ddd;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.mobile-search-toggle:hover {
+  border-color: #000;
+  background: #f5f5f5;
+}
+
+.mobile-cart {
   text-decoration: none;
   color: #555;
   font-size: 18px;
-  padding: 10px 0;
-  border-bottom: 1px solid #eee;
-  transition: color 0.3s;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 5px;
 }
 
-.mobile-nav-content a:hover {
+.mobile-cart:hover {
   color: #000;
+  background: #f5f5f5;
 }
 
-.mobile-search-bar {
-  padding: 12px;
+.mobile-cart-count {
+  background: #000;
+  color: white;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.mobile-search-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  overflow: hidden;
+  max-height: 0;
+  transition: all 0.3s ease;
+  background: white;
+  border-bottom: 1px solid #eee;
+}
+
+.mobile-search-container.open {
+  max-height: 80px;
+  padding: 15px 20px;
+}
+
+.mobile-search-input {
+  width: 100%;
+  padding: 12px 16px;
   border: 2px solid #ddd;
   border-radius: 8px;
   font-size: 16px;
-  margin-top: 10px;
+  transition: border-color 0.3s ease;
 }
 
-.desktop-nav,
-.desktop-search {
-  display: flex;
+.mobile-search-input:focus {
+  outline: none;
+  border-color: #000;
 }
 
 @media (max-width: 768px) {
-  .mobile-menu-toggle {
+  .desktop-only {
+    display: none;
+  }
+
+  .mobile-only {
     display: flex;
   }
 
-  .desktop-nav,
-  .desktop-search {
-    display: none;
-  }
-
-  .nav {
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .nav-links {
-    display: none;
-  }
-
-  .search-bar {
-    display: none;
+  .header {
+    padding: 0;
   }
 }

@@ -100,42 +100,47 @@ export default function Home() {
   return (
     <>
       <header className="header">
-        <nav className="nav">
+        {/* Desktop Navigation */}
+        <nav className="nav desktop-only">
           <Link href="/" className="logo" aria-label="Cleeve home">
             <Image src="/logo.jpeg" alt="Cleeve logo" className="logo-image" width={80} height={80} />
           </Link>
-          
-          {/* Desktop Navigation */}
-          <div className="nav-links desktop-nav">
+          <div className="nav-links">
             <a href="#kids">Kids</a>
             <a href="#teens">Teens</a>
             <a href="#adults">Young Adults</a>
           </div>
-          <input type="text" placeholder="Search..." className="search-bar desktop-search" />
+          <input type="text" placeholder="Search..." className="search-bar" />
           <div className="cart-icon">
             <Link href="/cart">🛒 <span id="item-count">{cartCount}</span></Link>
           </div>
-
-          {/* Mobile Hamburger Menu */}
-          <button 
-            className="mobile-menu-toggle" 
-            onClick={toggleMobileMenu}
-            aria-label="Toggle mobile menu"
-          >
-            <span className={`hamburger-line ${isMobileMenuOpen ? 'open' : ''}`}></span>
-            <span className={`hamburger-line ${isMobileMenuOpen ? 'open' : ''}`}></span>
-            <span className={`hamburger-line ${isMobileMenuOpen ? 'open' : ''}`}></span>
-          </button>
         </nav>
 
-        {/* Mobile Dropdown Menu */}
-        <div className={`mobile-nav-dropdown ${isMobileMenuOpen ? 'open' : ''}`}>
-          <div className="mobile-nav-content">
-            <a href="#kids" onClick={toggleMobileMenu}>Kids</a>
-            <a href="#teens" onClick={toggleMobileMenu}>Teens</a>
-            <a href="#adults" onClick={toggleMobileMenu}>Young Adults</a>
-            <input type="text" placeholder="Search..." className="mobile-search-bar" />
+        {/* Mobile Navigation */}
+        <nav className="mobile-nav mobile-only">
+          <Link href="/" className="mobile-logo" aria-label="Cleeve home">
+            <Image src="/logo.jpeg" alt="Cleeve logo" className="mobile-logo-image" width={50} height={50} />
+          </Link>
+          
+          <div className="mobile-nav-links">
+            <a href="#kids">Kids</a>
+            <a href="#teens">Teens</a>
+            <a href="#adults">Adults</a>
           </div>
+          
+          <div className="mobile-actions">
+            <button className="mobile-search-toggle" onClick={toggleMobileMenu}>
+              🔍
+            </button>
+            <Link href="/cart" className="mobile-cart">
+              🛒 <span className="mobile-cart-count">{cartCount}</span>
+            </Link>
+          </div>
+        </nav>
+
+        {/* Mobile Search Bar (toggleable) */}
+        <div className={`mobile-search-container ${isMobileMenuOpen ? 'open' : ''}`}>
+          <input type="text" placeholder="Search..." className="mobile-search-input" />
         </div>
 
         <div className="slideshow-container">
