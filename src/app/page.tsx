@@ -10,11 +10,19 @@ interface CartItem {
   quantity: number;
 }
 
+interface QuickViewProduct {
+  name: string;
+  price: number;
+  image: string;
+  description: string;
+}
+
 export default function Home() {
   const [slideIndex, setSlideIndex] = useState(0);
   const [cartCount, setCartCount] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [quickViewProduct, setQuickViewProduct] = useState<QuickViewProduct | null>(null);
 
   const updateCartCount = useCallback(() => {
     const items = getCartItems();
@@ -40,8 +48,17 @@ export default function Home() {
     updateCartCount();
   }, [getCartItems, setCartItems, updateCartCount]);
 
-  const handleQuickView = useCallback((name: string, price: number) => {
-    alert(`${name}\nPrice: $${price.toFixed(2)}`);
+  const handleQuickView = useCallback((name: string, price: number, image: string) => {
+    setQuickViewProduct({
+      name,
+      price,
+      image,
+      description: "Clean silhouettes. Everyday essentials. Made for now. Experience comfort and style with our signature Cleeve Essential collection."
+    });
+  }, []);
+
+  const closeQuickView = useCallback(() => {
+    setQuickViewProduct(null);
   }, []);
 
   const toggleMobileMenu = useCallback(() => {
@@ -124,7 +141,7 @@ export default function Home() {
         {/* Mobile Navigation */}
         <nav className="mobile-nav mobile-only">
           <Link href="/" className="mobile-logo" aria-label="Cleeve home">
-            <Image src="/logo.jpeg" alt="Cleeve logo" className="mobile-logo-image" width={50} height={50} />
+            <Image src="/logo.jpeg" alt="Cleeve logo" className="mobile-logo-image" width={65} height={65} />
           </Link>
           
           <div className="mobile-center">
@@ -167,17 +184,17 @@ export default function Home() {
         <div className="slideshow-container">
           <div className="slides fade">
             <Image
-              src="https://images.pexels.com/photos/5709661/pexels-photo-5709661.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt="Fashion Slide 1"
+              src="/cleeve photos/cl(1).jpeg"
+              alt="Cleeve Fashion Collection 1"
               fill
               style={{ objectFit: 'cover' }}
             />
             <div className="slide-text">Discover Your Style</div>
           </div>
           <div className="slides fade">
-        <Image
-              src="https://images.pexels.com/photos/5709665/pexels-photo-5709665.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt="Fashion Slide 2"
+            <Image
+              src="/cleeve photos/cl1 (2).jpeg"
+              alt="Cleeve Fashion Collection 2"
               fill
               style={{ objectFit: 'cover' }}
             />
@@ -185,14 +202,24 @@ export default function Home() {
           </div>
           <div className="slides fade">
             <Image
-              src="https://images.pexels.com/photos/5709664/pexels-photo-5709664.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt="Fashion Slide 3"
+              src="/cleeve photos/cl1 (3).jpeg"
+              alt="Cleeve Fashion Collection 3"
               fill
               style={{ objectFit: 'cover' }}
             />
             <div className="slide-text">Be Unique</div>
           </div>
+          <div className="slides fade">
+            <Image
+              src="/cleeve photos/cl1 (4).jpeg"
+              alt="Cleeve Fashion Collection 4"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+            <div className="slide-text">Fashion for Everyone</div>
+          </div>
           <div className="slideshow-dots">
+            <span className="dot"></span>
             <span className="dot"></span>
             <span className="dot"></span>
             <span className="dot"></span>
@@ -221,14 +248,14 @@ export default function Home() {
           <div className="product-grid">
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/5559986/pexels-photo-5559986.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Summer Dress"
+                src="/cleeve photos/cl(1).jpeg"
+                alt="Cleeve Summer Dress"
                 className="product-image"
                 width={300}
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Floral Summer Dress</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$29.99</p>
                 <button 
                   className="add-to-cart"
@@ -238,7 +265,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Floral Summer Dress", 29.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 29.99, "/cleeve photos/cl(1).jpeg")}
                 >
                   Quick View
                 </button>
@@ -247,14 +274,14 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/5868738/pexels-photo-5868738.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Casual Set"
+                src="/cleeve photos/cl1 (2).jpeg"
+                alt="Cleeve Casual Set"
                 className="product-image"
                 width={300}
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Denim Overall Set</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$34.99</p>
                 <button 
                   className="add-to-cart"
@@ -264,7 +291,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Denim Overall Set", 34.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 34.99, "/cleeve photos/cl1 (2).jpeg")}
                 >
                   Quick View
                 </button>
@@ -273,14 +300,14 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/5559991/pexels-photo-5559991.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Party Dress"
+                src="/cleeve photos/cl1 (3).jpeg"
+                alt="Cleeve Party Dress"
                 className="product-image"
                 width={300}
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Princess Party Dress</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$39.99</p>
                 <button 
                   className="add-to-cart"
@@ -290,7 +317,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Princess Party Dress", 39.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 39.99, "/cleeve photos/cl1 (3).jpeg")}
                 >
                   Quick View
                 </button>
@@ -299,14 +326,14 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/5559998/pexels-photo-5559998.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="School Set"
+                src="/cleeve photos/cl1 (4).jpeg"
+                alt="Cleeve School Set"
                 className="product-image"
                 width={300}
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Casual School Set</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$45.99</p>
                 <button 
                   className="add-to-cart"
@@ -316,7 +343,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Casual School Set", 45.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 45.99, "/cleeve photos/cl1 (4).jpeg")}
                 >
                   Quick View
                 </button>
@@ -330,14 +357,14 @@ export default function Home() {
           <div className="product-grid">
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/2705752/pexels-photo-2705752.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Street Style"
+                src="/cleeve photos/cl(1).jpeg"
+                alt="Cleeve Street Style"
                 className="product-image"
                 width={300}
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Urban Street Style</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$49.99</p>
                 <button 
                   className="add-to-cart"
@@ -347,7 +374,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Urban Street Style", 49.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 49.99, "/cleeve photos/cl(1).jpeg")}
                 >
                   Quick View
                 </button>
@@ -356,14 +383,14 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Summer Set"
+                src="/cleeve photos/cl1 (2).jpeg"
+                alt="Cleeve Summer Set"
                 className="product-image"
                 width={300}
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Summer Vibes Set</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$44.99</p>
                 <button 
                   className="add-to-cart"
@@ -373,7 +400,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Summer Vibes Set", 44.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 44.99, "/cleeve photos/cl1 (2).jpeg")}
                 >
                   Quick View
                 </button>
@@ -382,14 +409,14 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/2850487/pexels-photo-2850487.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Sport Set"
+                src="/cleeve photos/cl1 (3).jpeg"
+                alt="Cleeve Sport Set"
                 className="product-image"
                 width={300}
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Active Sports Set</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$54.99</p>
                 <button 
                   className="add-to-cart"
@@ -399,7 +426,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Active Sports Set", 54.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 54.99, "/cleeve photos/cl1 (3).jpeg")}
                 >
                   Quick View
                 </button>
@@ -408,14 +435,14 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/2755611/pexels-photo-2755611.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Party Wear"
+                src="/cleeve photos/cl1 (4).jpeg"
+                alt="Cleeve Party Wear"
                 className="product-image"
                 width={300}
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Evening Collection</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$59.99</p>
                 <button 
                   className="add-to-cart"
@@ -425,7 +452,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Evening Collection", 59.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 59.99, "/cleeve photos/cl1 (4).jpeg")}
                 >
                   Quick View
                 </button>
@@ -439,14 +466,14 @@ export default function Home() {
           <div className="product-grid">
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Professional"
+                src="/cleeve photos/cl(1).jpeg"
+                alt="Cleeve Professional"
                 className="product-image"
                 width={300}
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Classic Blazer Set</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$79.99</p>
                 <button 
                   className="add-to-cart"
@@ -456,7 +483,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Classic Blazer Set", 79.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 79.99, "/cleeve photos/cl(1).jpeg")}
                 >
                   Quick View
                 </button>
@@ -464,15 +491,15 @@ export default function Home() {
             </div>
 
             <div className="product-card">
-          <Image
-                src="https://images.pexels.com/photos/2584269/pexels-photo-2584269.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Casual"
+              <Image
+                src="/cleeve photos/cl1 (2).jpeg"
+                alt="Cleeve Casual"
                 className="product-image"
                 width={300}
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Weekend Casual</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$64.99</p>
                 <button 
                   className="add-to-cart"
@@ -482,7 +509,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Weekend Casual", 64.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 64.99, "/cleeve photos/cl1 (2).jpeg")}
                 >
                   Quick View
                 </button>
@@ -490,15 +517,15 @@ export default function Home() {
             </div>
 
             <div className="product-card">
-          <Image
-                src="https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Evening"
+              <Image
+                src="/cleeve photos/cl1 (3).jpeg"
+                alt="Cleeve Evening"
                 className="product-image"
                 width={300}
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Evening Elegance</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$89.99</p>
                 <button 
                   className="add-to-cart"
@@ -508,7 +535,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Evening Elegance", 89.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 89.99, "/cleeve photos/cl1 (3).jpeg")}
                 >
                   Quick View
                 </button>
@@ -516,15 +543,15 @@ export default function Home() {
             </div>
 
             <div className="product-card">
-          <Image
-                src="https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Business"
+              <Image
+                src="/cleeve photos/cl1 (4).jpeg"
+                alt="Cleeve Business"
                 className="product-image"
                 width={300}
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Business Casual</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$74.99</p>
                 <button 
                   className="add-to-cart"
@@ -534,7 +561,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Business Casual", 74.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 74.99, "/cleeve photos/cl1 (4).jpeg")}
                 >
                   Quick View
                 </button>
@@ -543,6 +570,51 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Quick View Modal */}
+      {quickViewProduct && (
+        <div className="quick-view-overlay" onClick={closeQuickView}>
+          <div className="quick-view-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="quick-view-close" onClick={closeQuickView}>
+              ✕
+            </button>
+            <div className="quick-view-content">
+              <div className="quick-view-image">
+                <Image
+                  src={quickViewProduct.image}
+                  alt={quickViewProduct.name}
+                  width={400}
+                  height={400}
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div className="quick-view-info">
+                <h2>{quickViewProduct.name}</h2>
+                <p className="quick-view-price">${quickViewProduct.price.toFixed(2)}</p>
+                <p className="quick-view-description">{quickViewProduct.description}</p>
+                <div className="quick-view-actions">
+                  <button 
+                    className="quick-view-add-cart"
+                    onClick={() => {
+                      addToCart({ 
+                        name: quickViewProduct.name, 
+                        price: quickViewProduct.price, 
+                        quantity: 1 
+                      });
+                      closeQuickView();
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                  <button className="quick-view-continue" onClick={closeQuickView}>
+                    Continue Shopping
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <footer>
         <div className="footer-doodles">
