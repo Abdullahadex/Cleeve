@@ -238,7 +238,7 @@ export default function Home() {
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Floral Summer Dress</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$29.99</p>
                 <button 
                   className="add-to-cart"
@@ -264,7 +264,7 @@ export default function Home() {
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Denim Overall Set</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$34.99</p>
                 <button 
                   className="add-to-cart"
@@ -290,7 +290,7 @@ export default function Home() {
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Princess Party Dress</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$39.99</p>
                 <button 
                   className="add-to-cart"
@@ -316,7 +316,7 @@ export default function Home() {
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Casual School Set</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$45.99</p>
                 <button 
                   className="add-to-cart"
@@ -347,7 +347,7 @@ export default function Home() {
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Urban Street Style</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$49.99</p>
                 <button 
                   className="add-to-cart"
@@ -373,7 +373,7 @@ export default function Home() {
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Summer Vibes Set</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$44.99</p>
                 <button 
                   className="add-to-cart"
@@ -399,7 +399,7 @@ export default function Home() {
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Active Sports Set</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$54.99</p>
                 <button 
                   className="add-to-cart"
@@ -425,7 +425,7 @@ export default function Home() {
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Evening Collection</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$59.99</p>
                 <button 
                   className="add-to-cart"
@@ -456,7 +456,7 @@ export default function Home() {
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Classic Blazer Set</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$79.99</p>
                 <button 
                   className="add-to-cart"
@@ -482,7 +482,7 @@ export default function Home() {
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Weekend Casual</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$64.99</p>
                 <button 
                   className="add-to-cart"
@@ -508,7 +508,7 @@ export default function Home() {
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Evening Elegance</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$89.99</p>
                 <button 
                   className="add-to-cart"
@@ -534,7 +534,7 @@ export default function Home() {
                 height={300}
               />
               <div className="product-info">
-                <h3 className="product-name">Business Casual</h3>
+                <h3 className="product-name">Cleeve Essential</h3>
                 <p className="product-price">$74.99</p>
                 <button 
                   className="add-to-cart"
