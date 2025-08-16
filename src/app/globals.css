@@ -700,7 +700,7 @@ footer {
   .mobile-only {
     display: none !important;
   }
-  
+
   .desktop-only {
     display: flex !important;
   }
