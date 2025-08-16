@@ -695,6 +695,17 @@ footer {
   display: none;
 }
 
+/* Hide mobile nav on desktop by default */
+@media (min-width: 769px) {
+  .mobile-only {
+    display: none !important;
+  }
+  
+  .desktop-only {
+    display: flex !important;
+  }
+}
+
 /* Mobile Navigation Styles */
 .mobile-nav {
   max-width: 1200px;
@@ -883,11 +894,11 @@ footer {
 
 @media (max-width: 768px) {
   .desktop-only {
-    display: none;
+    display: none !important;
   }
 
   .mobile-only {
-    display: flex;
+    display: flex !important;
   }
 
   .header {
