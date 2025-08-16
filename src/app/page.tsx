@@ -13,6 +13,8 @@ interface CartItem {
 export default function Home() {
   const [slideIndex, setSlideIndex] = useState(0);
   const [cartCount, setCartCount] = useState(0);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
 
   const updateCartCount = useCallback(() => {
     const items = getCartItems();
@@ -40,6 +42,14 @@ export default function Home() {
 
   const handleQuickView = useCallback((name: string, price: number) => {
     alert(`${name}\nPrice: $${price.toFixed(2)}`);
+  }, []);
+
+  const toggleMobileMenu = useCallback(() => {
+    setIsMobileMenuOpen(prev => !prev);
+  }, []);
+
+  const toggleMobileNav = useCallback(() => {
+    setIsMobileNavOpen(prev => !prev);
   }, []);
 
   useEffect(() => {
@@ -95,7 +105,8 @@ export default function Home() {
   return (
     <>
       <header className="header">
-        <nav className="nav">
+        {/* Desktop Navigation */}
+        <nav className="nav desktop-only">
           <Link href="/" className="logo" aria-label="Cleeve home">
             <Image src="/logo.jpeg" alt="Cleeve logo" className="logo-image" width={80} height={80} />
           </Link>
@@ -109,6 +120,49 @@ export default function Home() {
             <Link href="/cart">🛒 <span id="item-count">{cartCount}</span></Link>
           </div>
         </nav>
+
+        {/* Mobile Navigation */}
+        <nav className="mobile-nav mobile-only">
+          <Link href="/" className="mobile-logo" aria-label="Cleeve home">
+            <Image src="/logo.jpeg" alt="Cleeve logo" className="mobile-logo-image" width={50} height={50} />
+          </Link>
+          
+          <div className="mobile-center">
+            {/* Hamburger Menu for Navigation Links */}
+            <button 
+              className="mobile-hamburger" 
+              onClick={toggleMobileNav}
+              aria-label="Toggle navigation menu"
+            >
+              <span className={`hamburger-bar ${isMobileNavOpen ? 'open' : ''}`}></span>
+              <span className={`hamburger-bar ${isMobileNavOpen ? 'open' : ''}`}></span>
+              <span className={`hamburger-bar ${isMobileNavOpen ? 'open' : ''}`}></span>
+            </button>
+          </div>
+          
+          <div className="mobile-actions">
+            <button className="mobile-search-toggle" onClick={toggleMobileMenu}>
+              🔍
+            </button>
+            <Link href="/cart" className="mobile-cart">
+              🛒 <span className="mobile-cart-count">{cartCount}</span>
+            </Link>
+          </div>
+        </nav>
+
+        {/* Mobile Navigation Dropdown */}
+        <div className={`mobile-nav-dropdown ${isMobileNavOpen ? 'open' : ''}`}>
+          <div className="mobile-nav-menu">
+            <a href="#kids" onClick={toggleMobileNav}>Kids</a>
+            <a href="#teens" onClick={toggleMobileNav}>Teens</a>
+            <a href="#adults" onClick={toggleMobileNav}>Young Adults</a>
+          </div>
+        </div>
+
+        {/* Mobile Search Bar (toggleable) */}
+        <div className={`mobile-search-container ${isMobileMenuOpen ? 'open' : ''}`}>
+          <input type="text" placeholder="Search..." className="mobile-search-input" />
+        </div>
 
         <div className="slideshow-container">
           <div className="slides fade">
