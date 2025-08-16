@@ -725,11 +725,13 @@ footer {
 }
 
 .mobile-logo-image {
-  border-radius: 8px;
-  width: 50px !important;
-  height: 50px !important;
+  border-radius: 10px;
+  width: 65px !important;
+  height: 65px !important;
   object-fit: cover;
   display: block;
+  min-width: 65px;
+  min-height: 65px;
 }
 
 .mobile-center {
@@ -946,10 +948,11 @@ footer {
 
   /* Mobile-specific fixes */
   .mobile-logo-image {
-    width: 45px !important;
-    height: 45px !important;
-    min-width: 45px;
-    min-height: 45px;
+    width: 65px !important;
+    height: 65px !important;
+    min-width: 65px;
+    min-height: 65px;
+    border-radius: 10px;
   }
 
   .mobile-search-container {

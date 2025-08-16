@@ -141,7 +141,7 @@ export default function Home() {
         {/* Mobile Navigation */}
         <nav className="mobile-nav mobile-only">
           <Link href="/" className="mobile-logo" aria-label="Cleeve home">
-            <Image src="/logo.jpeg" alt="Cleeve logo" className="mobile-logo-image" width={50} height={50} />
+            <Image src="/logo.jpeg" alt="Cleeve logo" className="mobile-logo-image" width={65} height={65} />
           </Link>
           
           <div className="mobile-center">
