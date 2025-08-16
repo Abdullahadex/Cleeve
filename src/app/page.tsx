@@ -167,7 +167,7 @@ export default function Home() {
         <div className="slideshow-container">
           <div className="slides fade">
             <Image
-              src="/cleeve1.jpeg"
+              src="/cleeve photos/cl(1).jpeg"
               alt="Cleeve Fashion Collection 1"
               fill
               style={{ objectFit: 'cover' }}
@@ -176,7 +176,7 @@ export default function Home() {
           </div>
           <div className="slides fade">
             <Image
-              src="/cleeve2.jpeg"
+              src="/cleeve photos/cl1 (2).jpeg"
               alt="Cleeve Fashion Collection 2"
               fill
               style={{ objectFit: 'cover' }}
@@ -185,7 +185,7 @@ export default function Home() {
           </div>
           <div className="slides fade">
             <Image
-              src="/cleeve3.jpeg"
+              src="/cleeve photos/cl1 (3).jpeg"
               alt="Cleeve Fashion Collection 3"
               fill
               style={{ objectFit: 'cover' }}
@@ -194,7 +194,7 @@ export default function Home() {
           </div>
           <div className="slides fade">
             <Image
-              src="/cleeve4.jpeg"
+              src="/cleeve photos/cl1 (4).jpeg"
               alt="Cleeve Fashion Collection 4"
               fill
               style={{ objectFit: 'cover' }}
@@ -231,7 +231,7 @@ export default function Home() {
           <div className="product-grid">
             <div className="product-card">
               <Image
-                src="/cleeve1.jpeg"
+                src="/cleeve photos/cl(1).jpeg"
                 alt="Cleeve Summer Dress"
                 className="product-image"
                 width={300}
@@ -257,7 +257,7 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="/cleeve2.jpeg"
+                src="/cleeve photos/cl1 (2).jpeg"
                 alt="Cleeve Casual Set"
                 className="product-image"
                 width={300}
@@ -283,7 +283,7 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="/cleeve3.jpeg"
+                src="/cleeve photos/cl1 (3).jpeg"
                 alt="Cleeve Party Dress"
                 className="product-image"
                 width={300}
@@ -309,7 +309,7 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="/cleeve4.jpeg"
+                src="/cleeve photos/cl1 (4).jpeg"
                 alt="Cleeve School Set"
                 className="product-image"
                 width={300}
@@ -340,7 +340,7 @@ export default function Home() {
           <div className="product-grid">
             <div className="product-card">
               <Image
-                src="/cleeve1.jpeg"
+                src="/cleeve photos/cl(1).jpeg"
                 alt="Cleeve Street Style"
                 className="product-image"
                 width={300}
@@ -366,7 +366,7 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="/cleeve2.jpeg"
+                src="/cleeve photos/cl1 (2).jpeg"
                 alt="Cleeve Summer Set"
                 className="product-image"
                 width={300}
@@ -392,7 +392,7 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="/cleeve3.jpeg"
+                src="/cleeve photos/cl1 (3).jpeg"
                 alt="Cleeve Sport Set"
                 className="product-image"
                 width={300}
@@ -418,7 +418,7 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="/cleeve4.jpeg"
+                src="/cleeve photos/cl1 (4).jpeg"
                 alt="Cleeve Party Wear"
                 className="product-image"
                 width={300}
@@ -449,7 +449,7 @@ export default function Home() {
           <div className="product-grid">
             <div className="product-card">
               <Image
-                src="/cleeve1.jpeg"
+                src="/cleeve photos/cl(1).jpeg"
                 alt="Cleeve Professional"
                 className="product-image"
                 width={300}
@@ -475,7 +475,7 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="/cleeve2.jpeg"
+                src="/cleeve photos/cl1 (2).jpeg"
                 alt="Cleeve Casual"
                 className="product-image"
                 width={300}
@@ -501,7 +501,7 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="/cleeve3.jpeg"
+                src="/cleeve photos/cl1 (3).jpeg"
                 alt="Cleeve Evening"
                 className="product-image"
                 width={300}
@@ -527,7 +527,7 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="/cleeve4.jpeg"
+                src="/cleeve photos/cl1 (4).jpeg"
                 alt="Cleeve Business"
                 className="product-image"
                 width={300}
