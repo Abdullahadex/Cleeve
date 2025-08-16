@@ -167,17 +167,17 @@ export default function Home() {
         <div className="slideshow-container">
           <div className="slides fade">
             <Image
-              src="https://images.pexels.com/photos/5709661/pexels-photo-5709661.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt="Fashion Slide 1"
+              src="/cleeve1.jpeg"
+              alt="Cleeve Fashion Collection 1"
               fill
               style={{ objectFit: 'cover' }}
             />
             <div className="slide-text">Discover Your Style</div>
           </div>
           <div className="slides fade">
-        <Image
-              src="https://images.pexels.com/photos/5709665/pexels-photo-5709665.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt="Fashion Slide 2"
+            <Image
+              src="/cleeve2.jpeg"
+              alt="Cleeve Fashion Collection 2"
               fill
               style={{ objectFit: 'cover' }}
             />
@@ -185,14 +185,24 @@ export default function Home() {
           </div>
           <div className="slides fade">
             <Image
-              src="https://images.pexels.com/photos/5709664/pexels-photo-5709664.jpeg?auto=compress&cs=tinysrgb&w=1600"
-              alt="Fashion Slide 3"
+              src="/cleeve3.jpeg"
+              alt="Cleeve Fashion Collection 3"
               fill
               style={{ objectFit: 'cover' }}
             />
             <div className="slide-text">Be Unique</div>
           </div>
+          <div className="slides fade">
+            <Image
+              src="/cleeve4.jpeg"
+              alt="Cleeve Fashion Collection 4"
+              fill
+              style={{ objectFit: 'cover' }}
+            />
+            <div className="slide-text">Fashion for Everyone</div>
+          </div>
           <div className="slideshow-dots">
+            <span className="dot"></span>
             <span className="dot"></span>
             <span className="dot"></span>
             <span className="dot"></span>
@@ -221,8 +231,8 @@ export default function Home() {
           <div className="product-grid">
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/5559986/pexels-photo-5559986.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Summer Dress"
+                src="/cleeve1.jpeg"
+                alt="Cleeve Summer Dress"
                 className="product-image"
                 width={300}
                 height={300}
@@ -247,8 +257,8 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/5868738/pexels-photo-5868738.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Casual Set"
+                src="/cleeve2.jpeg"
+                alt="Cleeve Casual Set"
                 className="product-image"
                 width={300}
                 height={300}
@@ -273,8 +283,8 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/5559991/pexels-photo-5559991.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Party Dress"
+                src="/cleeve3.jpeg"
+                alt="Cleeve Party Dress"
                 className="product-image"
                 width={300}
                 height={300}
@@ -299,8 +309,8 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/5559998/pexels-photo-5559998.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="School Set"
+                src="/cleeve4.jpeg"
+                alt="Cleeve School Set"
                 className="product-image"
                 width={300}
                 height={300}
@@ -330,8 +340,8 @@ export default function Home() {
           <div className="product-grid">
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/2705752/pexels-photo-2705752.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Street Style"
+                src="/cleeve1.jpeg"
+                alt="Cleeve Street Style"
                 className="product-image"
                 width={300}
                 height={300}
@@ -356,8 +366,8 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Summer Set"
+                src="/cleeve2.jpeg"
+                alt="Cleeve Summer Set"
                 className="product-image"
                 width={300}
                 height={300}
@@ -382,8 +392,8 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/2850487/pexels-photo-2850487.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Sport Set"
+                src="/cleeve3.jpeg"
+                alt="Cleeve Sport Set"
                 className="product-image"
                 width={300}
                 height={300}
@@ -408,8 +418,8 @@ export default function Home() {
 
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/2755611/pexels-photo-2755611.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Party Wear"
+                src="/cleeve4.jpeg"
+                alt="Cleeve Party Wear"
                 className="product-image"
                 width={300}
                 height={300}
@@ -439,8 +449,8 @@ export default function Home() {
           <div className="product-grid">
             <div className="product-card">
               <Image
-                src="https://images.pexels.com/photos/1036623/pexels-photo-1036623.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Professional"
+                src="/cleeve1.jpeg"
+                alt="Cleeve Professional"
                 className="product-image"
                 width={300}
                 height={300}
@@ -464,9 +474,9 @@ export default function Home() {
             </div>
 
             <div className="product-card">
-          <Image
-                src="https://images.pexels.com/photos/2584269/pexels-photo-2584269.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Casual"
+              <Image
+                src="/cleeve2.jpeg"
+                alt="Cleeve Casual"
                 className="product-image"
                 width={300}
                 height={300}
@@ -490,9 +500,9 @@ export default function Home() {
             </div>
 
             <div className="product-card">
-          <Image
-                src="https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Evening"
+              <Image
+                src="/cleeve3.jpeg"
+                alt="Cleeve Evening"
                 className="product-image"
                 width={300}
                 height={300}
@@ -516,9 +526,9 @@ export default function Home() {
             </div>
 
             <div className="product-card">
-          <Image
-                src="https://images.pexels.com/photos/2681751/pexels-photo-2681751.jpeg?auto=compress&cs=tinysrgb&w=800"
-                alt="Business"
+              <Image
+                src="/cleeve4.jpeg"
+                alt="Cleeve Business"
                 className="product-image"
                 width={300}
                 height={300}
