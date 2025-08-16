@@ -10,11 +10,19 @@ interface CartItem {
   quantity: number;
 }
 
+interface QuickViewProduct {
+  name: string;
+  price: number;
+  image: string;
+  description: string;
+}
+
 export default function Home() {
   const [slideIndex, setSlideIndex] = useState(0);
   const [cartCount, setCartCount] = useState(0);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
+  const [quickViewProduct, setQuickViewProduct] = useState<QuickViewProduct | null>(null);
 
   const updateCartCount = useCallback(() => {
     const items = getCartItems();
@@ -40,8 +48,17 @@ export default function Home() {
     updateCartCount();
   }, [getCartItems, setCartItems, updateCartCount]);
 
-  const handleQuickView = useCallback((name: string, price: number) => {
-    alert(`${name}\nPrice: $${price.toFixed(2)}`);
+  const handleQuickView = useCallback((name: string, price: number, image: string) => {
+    setQuickViewProduct({
+      name,
+      price,
+      image,
+      description: "Clean silhouettes. Everyday essentials. Made for now. Experience comfort and style with our signature Cleeve Essential collection."
+    });
+  }, []);
+
+  const closeQuickView = useCallback(() => {
+    setQuickViewProduct(null);
   }, []);
 
   const toggleMobileMenu = useCallback(() => {
@@ -248,7 +265,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Floral Summer Dress", 29.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 29.99, "/cleeve photos/cl(1).jpeg")}
                 >
                   Quick View
                 </button>
@@ -274,7 +291,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Denim Overall Set", 34.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 34.99, "/cleeve photos/cl1 (2).jpeg")}
                 >
                   Quick View
                 </button>
@@ -300,7 +317,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Princess Party Dress", 39.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 39.99, "/cleeve photos/cl1 (3).jpeg")}
                 >
                   Quick View
                 </button>
@@ -326,7 +343,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Casual School Set", 45.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 45.99, "/cleeve photos/cl1 (4).jpeg")}
                 >
                   Quick View
                 </button>
@@ -357,7 +374,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Urban Street Style", 49.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 49.99, "/cleeve photos/cl(1).jpeg")}
                 >
                   Quick View
                 </button>
@@ -383,7 +400,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Summer Vibes Set", 44.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 44.99, "/cleeve photos/cl1 (2).jpeg")}
                 >
                   Quick View
                 </button>
@@ -409,7 +426,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Active Sports Set", 54.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 54.99, "/cleeve photos/cl1 (3).jpeg")}
                 >
                   Quick View
                 </button>
@@ -435,7 +452,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Evening Collection", 59.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 59.99, "/cleeve photos/cl1 (4).jpeg")}
                 >
                   Quick View
                 </button>
@@ -466,7 +483,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Classic Blazer Set", 79.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 79.99, "/cleeve photos/cl(1).jpeg")}
                 >
                   Quick View
                 </button>
@@ -492,7 +509,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Weekend Casual", 64.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 64.99, "/cleeve photos/cl1 (2).jpeg")}
                 >
                   Quick View
                 </button>
@@ -518,7 +535,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Evening Elegance", 89.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 89.99, "/cleeve photos/cl1 (3).jpeg")}
                 >
                   Quick View
                 </button>
@@ -544,7 +561,7 @@ export default function Home() {
                 </button>
                 <button 
                   className="quick-view"
-                  onClick={() => handleQuickView("Business Casual", 74.99)}
+                  onClick={() => handleQuickView("Cleeve Essential", 74.99, "/cleeve photos/cl1 (4).jpeg")}
                 >
                   Quick View
                 </button>
@@ -553,6 +570,51 @@ export default function Home() {
           </div>
         </section>
       </main>
+
+      {/* Quick View Modal */}
+      {quickViewProduct && (
+        <div className="quick-view-overlay" onClick={closeQuickView}>
+          <div className="quick-view-modal" onClick={(e) => e.stopPropagation()}>
+            <button className="quick-view-close" onClick={closeQuickView}>
+              ✕
+            </button>
+            <div className="quick-view-content">
+              <div className="quick-view-image">
+                <Image
+                  src={quickViewProduct.image}
+                  alt={quickViewProduct.name}
+                  width={400}
+                  height={400}
+                  style={{ objectFit: 'cover' }}
+                />
+              </div>
+              <div className="quick-view-info">
+                <h2>{quickViewProduct.name}</h2>
+                <p className="quick-view-price">${quickViewProduct.price.toFixed(2)}</p>
+                <p className="quick-view-description">{quickViewProduct.description}</p>
+                <div className="quick-view-actions">
+                  <button 
+                    className="quick-view-add-cart"
+                    onClick={() => {
+                      addToCart({ 
+                        name: quickViewProduct.name, 
+                        price: quickViewProduct.price, 
+                        quantity: 1 
+                      });
+                      closeQuickView();
+                    }}
+                  >
+                    Add to Cart
+                  </button>
+                  <button className="quick-view-continue" onClick={closeQuickView}>
+                    Continue Shopping
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
 
       <footer>
         <div className="footer-doodles">
