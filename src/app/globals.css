@@ -686,33 +686,6 @@ footer {
 
 /* Original mobile styles moved to new mobile navigation section */
 
-  .slideshow-container {
-    height: 400px;
-  }
-
-  .slide-text {
-    font-size: 2em;
-  }
-
-  .filters {
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  .product-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .cart-layout {
-    grid-template-columns: 1fr;
-  }
-
-  .cart-summary {
-    position: static;
-    margin-top: 16px;
-  }
-}
-
 /* Desktop and Mobile Navigation Separation */
 .desktop-only {
   display: flex;
@@ -919,5 +892,31 @@ footer {
 
   .header {
     padding: 0;
+  }
+
+  .slideshow-container {
+    height: 400px;
+  }
+
+  .slide-text {
+    font-size: 2em;
+  }
+
+  .filters {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .product-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cart-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .cart-summary {
+    position: static;
+    margin-top: 16px;
   }
 }
