@@ -280,34 +280,34 @@ export default function Home() {
             <p>Loading: {loading ? 'Yes' : 'No'}</p>
             <p>Featured Products Count: {featuredProducts.length}</p>
             <p>All Products Count: {products.length}</p>
-            <p>Featured Products: {JSON.stringify(featuredProducts.map(p => ({ id: p.id, name: p.attributes.name, featured: p.attributes.featured })))}</p>
+            <p>Featured Products: {JSON.stringify(featuredProducts.map(p => ({ id: p.id, name: p.name, featured: p.featured })))}</p>
           </div>
           {loading ? (
             <div className="loading">Loading products...</div>
           ) : featuredProducts.length > 0 ? (
             <div className="product-grid">
               {featuredProducts.map((product) => {
-                const imageUrl = product.attributes.images?.data?.[0]?.attributes?.url 
-                  ? `http://localhost:1337${product.attributes.images.data[0].attributes.url}`
+                const imageUrl = product.images?.data?.[0]?.attributes?.url 
+                  ? `http://localhost:1337${product.images.data[0].attributes.url}`
                   : "/cleeve photos/cl(1).jpeg"; // fallback image
                 
                 return (
                   <div key={product.id} className="product-card">
                     <Image
                       src={imageUrl}
-                      alt={product.attributes.name}
+                      alt={product.name}
                       className="product-image"
                       width={300}
                       height={300}
                     />
                     <div className="product-info">
-                      <h3 className="product-name">{product.attributes.name}</h3>
-                      <p className="product-price">${product.attributes.price.toFixed(2)}</p>
+                      <h3 className="product-name">{product.name}</h3>
+                      <p className="product-price">${product.price.toFixed(2)}</p>
                       <button 
                         className="add-to-cart"
                         onClick={() => addToCart({ 
-                          name: product.attributes.name, 
-                          price: product.attributes.price, 
+                          name: product.name, 
+                          price: product.price, 
                           quantity: 1 
                         })}
                       >
@@ -316,8 +316,8 @@ export default function Home() {
                       <button 
                         className="quick-view"
                         onClick={() => handleQuickView(
-                          product.attributes.name, 
-                          product.attributes.price, 
+                          product.name, 
+                          product.price, 
                           imageUrl
                         )}
                       >

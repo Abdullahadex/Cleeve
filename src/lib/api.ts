@@ -5,37 +5,35 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 
 export interface Product {
   id: number;
-  attributes: {
-    name: string;
-    description: string;
-    price: number;
-    compareAtPrice?: number;
-    sku?: string;
-    inventory: number;
-    isActive: boolean;
-    featured: boolean;
-    tags?: string[];
-    weight?: number;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-    images?: {
-      data: Array<{
-        id: number;
-        attributes: {
-          url: string;
-          name: string;
-          alternativeText?: string;
-        };
-      }>;
-    };
-    category?: {
-      data: {
-        id: number;
-        attributes: {
-          name: string;
-          slug: string;
-        };
+  name: string;
+  description?: string;
+  price: number;
+  compareAtPrice?: number;
+  sku?: string;
+  inventory: number;
+  isActive: boolean;
+  featured: boolean;
+  tags?: string[];
+  weight?: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  images?: {
+    data: Array<{
+      id: number;
+      attributes: {
+        url: string;
+        name: string;
+        alternativeText?: string;
+      };
+    }>;
+  };
+  category?: {
+    data: {
+      id: number;
+      attributes: {
+        name: string;
+        slug: string;
       };
     };
   };
@@ -84,7 +82,7 @@ export async function getFeaturedProducts(): Promise<Product[]> {
     
     // Filter featured products on the client side
     const featuredProducts = products.filter((product: Product) => 
-      product.attributes.featured === true
+      product.featured === true
     );
     
     console.log('All products:', products);
