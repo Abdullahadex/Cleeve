@@ -26,6 +26,8 @@ export default function Home() {
   const [quickViewProduct, setQuickViewProduct] = useState<QuickViewProduct | null>(null);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showCartNotification, setShowCartNotification] = useState(false);
+  const [cartNotificationMessage, setCartNotificationMessage] = useState('');
 
   const getCartItems = useCallback(() => {
     try {
@@ -49,6 +51,15 @@ export default function Home() {
     items.push(item);
     setCartItems(items);
     setCartCount(items.length);
+    
+    // Show cart notification
+    setCartNotificationMessage(`${item.name} added to cart!`);
+    setShowCartNotification(true);
+    
+    // Hide notification after 3 seconds
+    setTimeout(() => {
+      setShowCartNotification(false);
+    }, 3000);
   }, [getCartItems, setCartItems]);
 
   const handleQuickView = useCallback((name: string, price: number, image: string) => {
@@ -151,6 +162,16 @@ export default function Home() {
 
   return (
     <>
+      {/* Cart Notification Toast */}
+      {showCartNotification && (
+        <div className="cart-notification">
+          <div className="cart-notification-content">
+            <span className="cart-notification-icon">✓</span>
+            <span className="cart-notification-text">{cartNotificationMessage}</span>
+          </div>
+        </div>
+      )}
+      
       <header className="header">
         {/* Desktop Navigation */}
         <nav className="nav desktop-only">

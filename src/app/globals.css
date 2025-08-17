@@ -1166,3 +1166,61 @@ footer {
 .product-card:hover .product-image {
   transform: scale(1.05);
 }
+
+/* Cart Notification Styles */
+.cart-notification {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  z-index: 1000;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.cart-notification-content {
+  background: #4CAF50;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  font-weight: 500;
+  min-width: 200px;
+}
+
+.cart-notification-icon {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.cart-notification-text {
+  flex: 1;
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Mobile responsive for cart notification */
+@media (max-width: 768px) {
+  .cart-notification {
+    top: 10px;
+    right: 10px;
+    left: 10px;
+  }
+  
+  .cart-notification-content {
+    min-width: auto;
+    padding: 10px 16px;
+    font-size: 13px;
+  }
+}
