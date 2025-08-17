@@ -271,6 +271,13 @@ export default function Home() {
 
         <section id="featured">
           <h2 className="category-title">Featured Essentials</h2>
+          <div style={{ padding: '1rem', background: '#f0f0f0', margin: '1rem 0' }}>
+            <p><strong>Debug Info:</strong></p>
+            <p>Loading: {loading ? 'Yes' : 'No'}</p>
+            <p>Featured Products Count: {featuredProducts.length}</p>
+            <p>All Products Count: {products.length}</p>
+            <p>API URL: {process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}</p>
+          </div>
           {loading ? (
             <div className="loading">Loading products...</div>
           ) : featuredProducts.length > 0 ? (
