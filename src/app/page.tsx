@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
-import { getProducts, getFeaturedProducts, Product } from "@/lib/api";
+import { getProducts, getFeaturedProducts, Product, getProductImageUrl } from "@/lib/api";
 
 interface CartItem {
   name: string;
@@ -281,6 +281,7 @@ export default function Home() {
             <p>All Products Count: {products.length}</p>
             <p>API URL: {process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}</p>
             <p>First Product Images: {JSON.stringify(featuredProducts[0]?.attributes?.images)}</p>
+            <p>First Product Image URL: {featuredProducts[0] ? getProductImageUrl(featuredProducts[0]) : 'No products'}</p>
           </div>
           {loading ? (
             <div className="loading">Loading products...</div>
@@ -290,20 +291,8 @@ export default function Home() {
   console.log('Product data:', product);
   console.log('Product images data:', product.attributes?.images);
   
-  // Improved image URL construction
-  let imageUrl = "/cleeve photos/cl(1).jpeg"; // fallback image
-  
-  if (product.attributes?.images?.data && product.attributes.images.data.length > 0) {
-    const firstImage = product.attributes.images.data[0];
-    if (firstImage.attributes?.url) {
-      // Handle both relative and absolute URLs
-      if (firstImage.attributes.url.startsWith('http')) {
-        imageUrl = firstImage.attributes.url;
-      } else {
-        imageUrl = `http://localhost:1337${firstImage.attributes.url}`;
-      }
-    }
-  }
+  // Use the helper function to get image URL
+  const imageUrl = getProductImageUrl(product);
   
   console.log('Final image URL:', imageUrl);
   
