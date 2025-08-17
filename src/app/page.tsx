@@ -336,9 +336,7 @@ export default function Home() {
                 );
               })}
             </div>
-          ) : (
-            <div className="no-products">No featured products available. Add some products in your CMS!</div>
-          )}
+          ) : null}
         </section>
 
         <section id="teens">
