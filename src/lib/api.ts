@@ -5,49 +5,39 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 
 export interface Product {
   id: number;
-  attributes: {
+  documentId: string;
+  name: string;
+  description?: string;
+  price: number;
+  compareAtPrice?: number;
+  sku?: string;
+  inventory: number;
+  isActive: boolean;
+  featured: boolean;
+  tags?: string[];
+  weight?: number;
+  createdAt: string;
+  updatedAt: string;
+  publishedAt: string;
+  images?: Array<{
+    id: number;
+    documentId: string;
     name: string;
-    description?: string;
-    price: number;
-    compareAtPrice?: number;
-    sku?: string;
-    inventory: number;
-    isActive: boolean;
-    featured: boolean;
-    tags?: string[];
-    weight?: number;
-    createdAt: string;
-    updatedAt: string;
-    publishedAt: string;
-    images?: {
-      data: Array<{
-        id: number;
-        attributes: {
-          url: string;
-          name: string;
-          alternativeText?: string;
-          width?: number;
-          height?: number;
-          formats?: {
-            thumbnail?: {
-              url: string;
-              width: number;
-              height: number;
-            };
-          };
-        };
-      }>;
-    };
-    category?: {
-      data: {
-        id: number;
-        attributes: {
-          name: string;
-          slug: string;
-        };
+    alternativeText?: string;
+    width?: number;
+    height?: number;
+    formats?: {
+      thumbnail?: {
+        url: string;
+        width: number;
+        height: number;
       };
     };
-  };
+    url: string;
+  }>;
+  category?: any;
+  dimensions?: any;
+  variants?: any[];
 }
 
 export interface Category {
@@ -203,18 +193,18 @@ export function getStrapiImageUrl(image: { url?: string } | null): string {
 
 // Helper function to get the first image URL from a product
 export function getProductImageUrl(product: Product): string {
-  if (!product?.attributes?.images?.data || product.attributes.images.data.length === 0) {
+  if (!product?.images || product.images.length === 0) {
     return '/cleeve photos/cl(1).jpeg'; // fallback image
   }
   
-  const firstImage = product.attributes.images.data[0];
+  const firstImage = product.images[0];
   const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
   
-  if (firstImage.attributes?.url) {
-    if (firstImage.attributes.url.startsWith('http')) {
-      return firstImage.attributes.url;
+  if (firstImage?.url) {
+    if (firstImage.url.startsWith('http')) {
+      return firstImage.url;
     }
-    return `${baseUrl}${firstImage.attributes.url}`;
+    return `${baseUrl}${firstImage.url}`;
   }
   
   return '/cleeve photos/cl(1).jpeg'; // fallback image

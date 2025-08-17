@@ -278,7 +278,7 @@ export default function Home() {
             <p>Loading: {loading ? 'Yes' : 'No'}</p>
             <p>Featured Products Count: {featuredProducts.length}</p>
             <p>API URL: {process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}</p>
-            <p>First Product: {featuredProducts[0] ? featuredProducts[0].attributes.name : 'No products'}</p>
+            <p>First Product: {featuredProducts[0] ? featuredProducts[0].name : 'No products'}</p>
           </div>
           {loading ? (
             <div className="loading">Loading products...</div>
@@ -304,13 +304,13 @@ export default function Home() {
         }}
       />
                     <div className="product-info">
-                      <h3 className="product-name">{product.attributes.name}</h3>
-                      <p className="product-price">${product.attributes.price.toFixed(2)}</p>
+                      <h3 className="product-name">{product.name}</h3>
+                      <p className="product-price">${product.price.toFixed(2)}</p>
                       <button 
                         className="add-to-cart"
                         onClick={() => addToCart({ 
-                          name: product.attributes.name, 
-                          price: product.attributes.price, 
+                          name: product.name, 
+                          price: product.price, 
                           quantity: 1 
                         })}
                       >
@@ -319,8 +319,8 @@ export default function Home() {
                       <button 
                         className="quick-view"
                         onClick={() => handleQuickView(
-                          product.attributes.name, 
-                          product.attributes.price, 
+                          product.name, 
+                          product.price, 
                           imageUrl
                         )}
                       >
