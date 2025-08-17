@@ -1,19 +1,20 @@
-import type { NextConfig } from "next";
-
-const nextConfig: NextConfig = {
+/** @type {import('next').NextConfig} */
+const nextConfig = {
   images: {
+    domains: ['localhost'],
     remotePatterns: [
       {
-        protocol: 'https',
-        hostname: 'images.pexels.com',
-        port: '',
-        pathname: '/**',
+        protocol: 'http',
+        hostname: 'localhost',
+        port: '1337',
+        pathname: '/uploads/**',
       },
     ],
   },
+  experimental: {
+    serverComponentsExternalPackages: ['@strapi/strapi'],
+  },
   webpack: (config, { isServer }) => {
-    // Exclude Strapi CMS files from webpack compilation
-    config.externals = config.externals || [];
     if (!isServer) {
       config.resolve.fallback = {
         ...config.resolve.fallback,
