@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
+import { getProducts, getFeaturedProducts, Product } from "@/lib/api";
 
 interface CartItem {
   name: string;
@@ -23,6 +24,9 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState<QuickViewProduct | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
+  const [loading, setLoading] = useState(true);
 
   const updateCartCount = useCallback(() => {
     const items = getCartItems();
@@ -69,9 +73,29 @@ export default function Home() {
     setIsMobileNavOpen(prev => !prev);
   }, []);
 
+  // Fetch products from CMS
+  const fetchProducts = useCallback(async () => {
+    try {
+      setLoading(true);
+      const [allProducts, featured] = await Promise.all([
+        getProducts(),
+        getFeaturedProducts()
+      ]);
+      setProducts(allProducts);
+      setFeaturedProducts(featured);
+    } catch (error) {
+      console.error('Error fetching products:', error);
+    } finally {
+      setLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     // Initialize cart count on page load
     updateCartCount();
+    
+    // Fetch products from CMS
+    fetchProducts();
     
     let timeoutHandle: NodeJS.Timeout;
     const showSlides = () => {
@@ -101,7 +125,7 @@ export default function Home() {
     return () => {
       clearTimeout(timeoutHandle);
     };
-  }, [slideIndex, updateCartCount]);
+  }, [slideIndex, updateCartCount, fetchProducts]);
 
   useEffect(() => {
     // Add click handlers for dots
@@ -245,111 +269,55 @@ export default function Home() {
 
         <section id="featured">
           <h2 className="category-title">Featured Essentials</h2>
-          <div className="product-grid">
-            <div className="product-card">
-              <Image
-                src="/cleeve photos/cl(1).jpeg"
-                alt="Cleeve Summer Dress"
-                className="product-image"
-                width={300}
-                height={300}
-              />
-              <div className="product-info">
-                <h3 className="product-name">Cleeve Essential</h3>
-                <p className="product-price">$29.99</p>
-                <button 
-                  className="add-to-cart"
-                  onClick={() => addToCart({ name: "Floral Summer Dress", price: 29.99, quantity: 1 })}
-                >
-                  Add to Cart
-                </button>
-                <button 
-                  className="quick-view"
-                  onClick={() => handleQuickView("Cleeve Essential", 29.99, "/cleeve photos/cl(1).jpeg")}
-                >
-                  Quick View
-                </button>
-              </div>
+          {loading ? (
+            <div className="loading">Loading products...</div>
+          ) : featuredProducts.length > 0 ? (
+            <div className="product-grid">
+              {featuredProducts.map((product) => {
+                const imageUrl = product.attributes.images?.data?.[0]?.attributes?.url 
+                  ? `http://localhost:1337${product.attributes.images.data[0].attributes.url}`
+                  : "/cleeve photos/cl(1).jpeg"; // fallback image
+                
+                return (
+                  <div key={product.id} className="product-card">
+                    <Image
+                      src={imageUrl}
+                      alt={product.attributes.name}
+                      className="product-image"
+                      width={300}
+                      height={300}
+                    />
+                    <div className="product-info">
+                      <h3 className="product-name">{product.attributes.name}</h3>
+                      <p className="product-price">${product.attributes.price.toFixed(2)}</p>
+                      <button 
+                        className="add-to-cart"
+                        onClick={() => addToCart({ 
+                          name: product.attributes.name, 
+                          price: product.attributes.price, 
+                          quantity: 1 
+                        })}
+                      >
+                        Add to Cart
+                      </button>
+                      <button 
+                        className="quick-view"
+                        onClick={() => handleQuickView(
+                          product.attributes.name, 
+                          product.attributes.price, 
+                          imageUrl
+                        )}
+                      >
+                        Quick View
+                      </button>
+                    </div>
+                  </div>
+                );
+              })}
             </div>
-
-            <div className="product-card">
-              <Image
-                src="/cleeve photos/cl1 (2).jpeg"
-                alt="Cleeve Casual Set"
-                className="product-image"
-                width={300}
-                height={300}
-              />
-              <div className="product-info">
-                <h3 className="product-name">Cleeve Essential</h3>
-                <p className="product-price">$34.99</p>
-                <button 
-                  className="add-to-cart"
-                  onClick={() => addToCart({ name: "Denim Overall Set", price: 34.99, quantity: 1 })}
-                >
-                  Add to Cart
-                </button>
-                <button 
-                  className="quick-view"
-                  onClick={() => handleQuickView("Cleeve Essential", 34.99, "/cleeve photos/cl1 (2).jpeg")}
-                >
-                  Quick View
-                </button>
-              </div>
-            </div>
-
-            <div className="product-card">
-              <Image
-                src="/cleeve photos/cl1 (3).jpeg"
-                alt="Cleeve Party Dress"
-                className="product-image"
-                width={300}
-                height={300}
-              />
-              <div className="product-info">
-                <h3 className="product-name">Cleeve Essential</h3>
-                <p className="product-price">$39.99</p>
-                <button 
-                  className="add-to-cart"
-                  onClick={() => addToCart({ name: "Princess Party Dress", price: 39.99, quantity: 1 })}
-                >
-                  Add to Cart
-                </button>
-                <button 
-                  className="quick-view"
-                  onClick={() => handleQuickView("Cleeve Essential", 39.99, "/cleeve photos/cl1 (3).jpeg")}
-                >
-                  Quick View
-                </button>
-              </div>
-            </div>
-
-            <div className="product-card">
-              <Image
-                src="/cleeve photos/cl1 (4).jpeg"
-                alt="Cleeve School Set"
-                className="product-image"
-                width={300}
-                height={300}
-              />
-              <div className="product-info">
-                <h3 className="product-name">Cleeve Essential</h3>
-                <p className="product-price">$45.99</p>
-                <button 
-                  className="add-to-cart"
-                  onClick={() => addToCart({ name: "Casual School Set", price: 45.99, quantity: 1 })}
-                >
-                  Add to Cart
-                </button>
-                <button 
-                  className="quick-view"
-                  onClick={() => handleQuickView("Cleeve Essential", 45.99, "/cleeve photos/cl1 (4).jpeg")}
-                >
-                  Quick View
-                </button>
-              </div>
-            </div>
-          </div>
+          ) : (
+            <div className="no-products">No featured products available. Add some products in your CMS!</div>
+          )}
         </section>
 
         <section id="teens">
