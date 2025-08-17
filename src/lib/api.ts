@@ -75,9 +75,19 @@ export async function getProducts(): Promise<Product[]> {
 // Fetch featured products
 export async function getFeaturedProducts(): Promise<Product[]> {
   try {
-    const response = await fetch(`${STRAPI_URL}/api/products?filters[featured][$eq]=true&populate=*`);
+    const response = await fetch(`${STRAPI_URL}/api/products?populate=*`);
     const data = await response.json();
-    return data.data || [];
+    const products = data.data || [];
+    
+    // Filter featured products on the client side
+    const featuredProducts = products.filter((product: Product) => 
+      product.attributes.featured === true
+    );
+    
+    console.log('All products:', products);
+    console.log('Featured products:', featuredProducts);
+    
+    return featuredProducts;
   } catch (error) {
     console.error('Error fetching featured products:', error);
     return [];

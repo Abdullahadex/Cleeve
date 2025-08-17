@@ -77,10 +77,16 @@ export default function Home() {
   const fetchProducts = useCallback(async () => {
     try {
       setLoading(true);
+      console.log('Fetching products...');
+      
       const [allProducts, featured] = await Promise.all([
         getProducts(),
         getFeaturedProducts()
       ]);
+      
+      console.log('All products fetched:', allProducts);
+      console.log('Featured products fetched:', featured);
+      
       setProducts(allProducts);
       setFeaturedProducts(featured);
     } catch (error) {
