@@ -35,9 +35,21 @@ export interface Product {
     };
     url: string;
   }>;
-  category?: any;
-  dimensions?: any;
-  variants?: any[];
+  category?: {
+    id: number;
+    name: string;
+    description?: string;
+  };
+  dimensions?: {
+    length?: number;
+    width?: number;
+    height?: number;
+  };
+  variants?: Array<{
+    id: number;
+    name: string;
+    price?: number;
+  }>;
 }
 
 export interface Category {

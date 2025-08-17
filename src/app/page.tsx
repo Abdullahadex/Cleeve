@@ -3,7 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState, useCallback } from "react";
-import { getProducts, getFeaturedProducts, Product, getProductImageUrl } from "@/lib/api";
+import { getFeaturedProducts, Product, getProductImageUrl } from "@/lib/api";
 
 interface CartItem {
   name: string;
