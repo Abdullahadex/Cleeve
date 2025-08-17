@@ -64,7 +64,7 @@ export interface Category {
 // Fetch all products
 export async function getProducts(): Promise<Product[]> {
   try {
-    const response = await fetch(`${STRAPI_URL}/api/products?populate=*`);
+    const response = await fetch(`${STRAPI_URL}/api/products?populate=images,category`);
     const data = await response.json();
     return data.data || [];
   } catch (error) {
@@ -76,7 +76,7 @@ export async function getProducts(): Promise<Product[]> {
 // Fetch featured products
 export async function getFeaturedProducts(): Promise<Product[]> {
   try {
-    const response = await fetch(`${STRAPI_URL}/api/products?populate=*`);
+    const response = await fetch(`${STRAPI_URL}/api/products?populate=images,category`);
     const data = await response.json();
     const products = data.data || [];
     
