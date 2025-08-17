@@ -31,7 +31,7 @@ export default function Home() {
   const updateCartCount = useCallback(() => {
     const items = getCartItems();
     setCartCount(items.length);
-  }, []);
+  }, [getCartItems]);
 
   const getCartItems = useCallback(() => {
     try {

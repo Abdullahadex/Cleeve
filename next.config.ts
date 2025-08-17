@@ -11,9 +11,7 @@ const nextConfig = {
       },
     ],
   },
-  experimental: {
-    serverComponentsExternalPackages: ['@strapi/strapi'],
-  },
+  serverExternalPackages: ['@strapi/strapi'],
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve.fallback = {

@@ -31,7 +31,7 @@ export default function Cart() {
     items.splice(index, 1);
     updateCartItems(items);
     displayCartItems();
-  }, [getCartItems, updateCartItems]);
+  }, [getCartItems, updateCartItems, displayCartItems]);
 
   const displayCartItems = useCallback(() => {
     const items = getCartItems();

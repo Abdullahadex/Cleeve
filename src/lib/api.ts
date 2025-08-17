@@ -189,7 +189,7 @@ export async function searchProducts(query: string): Promise<Product[]> {
 }
 
 // Helper function to get image URL from Strapi
-export function getStrapiImageUrl(image: any): string {
+export function getStrapiImageUrl(image: { url?: string } | null): string {
   if (!image) return '';
   
   const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
