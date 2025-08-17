@@ -1,0 +1,36 @@
+{
+  "collectionName": "components_product_variant",
+  "info": {
+    "displayName": "Variant",
+    "description": "Product variants like size, color, etc."
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    },
+    "price": {
+      "type": "decimal",
+      "min": 0
+    },
+    "sku": {
+      "type": "string"
+    },
+    "inventory": {
+      "type": "integer",
+      "default": 0,
+      "min": 0
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": ["images"]
+    }
+  }
+}
