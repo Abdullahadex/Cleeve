@@ -24,14 +24,8 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState<QuickViewProduct | null>(null);
-  const [products, setProducts] = useState<Product[]>([]);
   const [featuredProducts, setFeaturedProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(true);
-
-  const updateCartCount = useCallback(() => {
-    const items = getCartItems();
-    setCartCount(items.length);
-  }, [getCartItems]);
 
   const getCartItems = useCallback(() => {
     try {
@@ -40,6 +34,11 @@ export default function Home() {
       return [];
     }
   }, []);
+
+  const updateCartCount = useCallback(() => {
+    const items = getCartItems();
+    setCartCount(items.length);
+  }, [getCartItems]);
 
   const setCartItems = useCallback((items: CartItem[]) => {
     localStorage.setItem("cartItems", JSON.stringify(items));
@@ -78,12 +77,8 @@ export default function Home() {
     try {
       setLoading(true);
       
-      const [allProducts, featured] = await Promise.all([
-        getProducts(),
-        getFeaturedProducts()
-      ]);
+      const featured = await getFeaturedProducts();
       
-      setProducts(allProducts);
       setFeaturedProducts(featured);
     } catch (error) {
       console.error('Error fetching products:', error);
