@@ -280,16 +280,19 @@ export default function Home() {
             <p>Loading: {loading ? 'Yes' : 'No'}</p>
             <p>Featured Products Count: {featuredProducts.length}</p>
             <p>All Products Count: {products.length}</p>
-            <p>Featured Products: {JSON.stringify(featuredProducts.map(p => ({ id: p.id, name: p.name, featured: p.featured })))}</p>
+            <p>Featured Products: {JSON.stringify(featuredProducts.map(p => ({ id: p.id, name: p.name, featured: p.featured, hasImages: !!p.images?.data?.length })))}</p>
+            <p>First Product Images: {JSON.stringify(featuredProducts[0]?.images)}</p>
           </div>
           {loading ? (
             <div className="loading">Loading products...</div>
           ) : featuredProducts.length > 0 ? (
             <div className="product-grid">
               {featuredProducts.map((product) => {
+                console.log('Product images:', product.images);
                 const imageUrl = product.images?.data?.[0]?.attributes?.url 
                   ? `http://localhost:1337${product.images.data[0].attributes.url}`
                   : "/cleeve photos/cl(1).jpeg"; // fallback image
+                console.log('Using image URL:', imageUrl);
                 
                 return (
                   <div key={product.id} className="product-card">
