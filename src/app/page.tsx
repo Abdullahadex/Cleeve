@@ -285,10 +285,12 @@ export default function Home() {
             <div className="product-grid">
               {featuredProducts.map((product) => {
                 console.log('Product images data:', product.images);
+                console.log('First image object:', product.images?.[0]);
+                console.log('First image URL:', product.images?.[0]?.url);
                 const imageUrl = product.images?.[0]?.url 
                   ? `http://localhost:1337${product.images[0].url}`
                   : "/cleeve photos/cl(1).jpeg"; // fallback image
-                console.log('Using image URL:', imageUrl);
+                console.log('Final image URL:', imageUrl);
                 
                 return (
                   <div key={product.id} className="product-card">
