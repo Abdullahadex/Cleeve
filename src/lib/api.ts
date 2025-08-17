@@ -1,5 +1,8 @@
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
+// For now, we'll use a simple approach without authentication
+// In production, you should use proper API tokens
+
 export interface Product {
   id: number;
   attributes: {
