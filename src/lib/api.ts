@@ -85,9 +85,6 @@ export async function getFeaturedProducts(): Promise<Product[]> {
       product.featured === true
     );
     
-    console.log('All products:', products);
-    console.log('Featured products:', featuredProducts);
-    
     return featuredProducts;
   } catch (error) {
     console.error('Error fetching featured products:', error);
