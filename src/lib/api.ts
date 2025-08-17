@@ -18,16 +18,21 @@ export interface Product {
   createdAt: string;
   updatedAt: string;
   publishedAt: string;
-  images?: {
-    data: Array<{
-      id: number;
-      attributes: {
+  images?: Array<{
+    id: number;
+    name: string;
+    url: string;
+    alternativeText?: string;
+    width?: number;
+    height?: number;
+    formats?: {
+      thumbnail?: {
         url: string;
-        name: string;
-        alternativeText?: string;
+        width: number;
+        height: number;
       };
-    }>;
-  };
+    };
+  }>;
   category?: {
     data: {
       id: number;
