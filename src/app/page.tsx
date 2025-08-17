@@ -284,23 +284,42 @@ export default function Home() {
           ) : featuredProducts.length > 0 ? (
             <div className="product-grid">
               {featuredProducts.map((product) => {
-                console.log('Product images data:', product.images);
-                console.log('First image object:', product.images?.[0]);
-                console.log('First image URL:', product.images?.[0]?.url);
-                const imageUrl = product.images?.[0]?.url 
-                  ? `http://localhost:1337${product.images[0].url}`
-                  : "/cleeve photos/cl(1).jpeg"; // fallback image
-                console.log('Final image URL:', imageUrl);
-                
-                return (
-                  <div key={product.id} className="product-card">
-                    <Image
-                      src={imageUrl}
-                      alt={product.name}
-                      className="product-image"
-                      width={300}
-                      height={300}
-                    />
+  console.log('Product images data:', product.images);
+  console.log('First image object:', product.images?.[0]);
+  console.log('First image URL:', product.images?.[0]?.url);
+  
+  // Improved image URL construction
+  let imageUrl = "/cleeve photos/cl(1).jpeg"; // fallback image
+  
+  if (product.images && product.images.length > 0) {
+    const firstImage = product.images[0];
+    if (firstImage.url) {
+      // Handle both relative and absolute URLs
+      if (firstImage.url.startsWith('http')) {
+        imageUrl = firstImage.url;
+      } else {
+        imageUrl = `http://localhost:1337${firstImage.url}`;
+      }
+    }
+  }
+  
+  console.log('Final image URL:', imageUrl);
+  
+  return (
+    <div key={product.id} className="product-card">
+      <Image
+        src={imageUrl}
+        alt={product.name}
+        className="product-image"
+        width={300}
+        height={300}
+        onError={(e) => {
+          console.error('Image failed to load:', imageUrl);
+          // Fallback to default image on error
+          const target = e.target as HTMLImageElement;
+          target.src = "/cleeve photos/cl(1).jpeg";
+        }}
+      />
                     <div className="product-info">
                       <h3 className="product-name">{product.name}</h3>
                       <p className="product-price">${product.price.toFixed(2)}</p>
