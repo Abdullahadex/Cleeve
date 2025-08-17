@@ -26,13 +26,6 @@ export default function Cart() {
     localStorage.setItem("cartItems", JSON.stringify(items));
   }, []);
 
-  const removeFromCart = useCallback((index: number) => {
-    const items = getCartItems();
-    items.splice(index, 1);
-    updateCartItems(items);
-    displayCartItems();
-  }, [getCartItems, updateCartItems, displayCartItems]);
-
   const displayCartItems = useCallback(() => {
     const items = getCartItems();
     setCartItems(items);
@@ -43,6 +36,13 @@ export default function Cart() {
     });
     setTotalPrice(total);
   }, [getCartItems]);
+
+  const removeFromCart = useCallback((index: number) => {
+    const items = getCartItems();
+    items.splice(index, 1);
+    updateCartItems(items);
+    displayCartItems();
+  }, [getCartItems, updateCartItems, displayCartItems]);
 
   useEffect(() => {
     displayCartItems();
