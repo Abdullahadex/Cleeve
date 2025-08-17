@@ -75,15 +75,19 @@ export default function Home() {
   // Fetch products from CMS - Production ready
   const fetchProducts = useCallback(async () => {
     try {
+      console.log('🚀 Starting to fetch products...');
       setLoading(true);
       
       const featured = await getFeaturedProducts();
+      console.log('🎯 Featured products received:', featured);
       
       setFeaturedProducts(featured);
+      console.log('✅ Featured products state updated');
     } catch (error) {
-      console.error('Error fetching products:', error);
+      console.error('❌ Error fetching products:', error);
     } finally {
       setLoading(false);
+      console.log('🏁 Loading finished');
     }
   }, []);
 
