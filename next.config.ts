@@ -11,10 +11,6 @@ const nextConfig: NextConfig = {
       },
     ],
   },
-  // Exclude Strapi CMS files from Next.js build
-  experimental: {
-    excludeDefaultMomentLocales: true,
-  },
   webpack: (config, { isServer }) => {
     // Exclude Strapi CMS files from webpack compilation
     config.externals = config.externals || [];
