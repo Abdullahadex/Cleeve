@@ -5,40 +5,46 @@ const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'
 
 export interface Product {
   id: number;
-  name: string;
-  description?: string;
-  price: number;
-  compareAtPrice?: number;
-  sku?: string;
-  inventory: number;
-  isActive: boolean;
-  featured: boolean;
-  tags?: string[];
-  weight?: number;
-  createdAt: string;
-  updatedAt: string;
-  publishedAt: string;
-  images?: Array<{
-    id: number;
+  attributes: {
     name: string;
-    url: string;
-    alternativeText?: string;
-    width?: number;
-    height?: number;
-    formats?: {
-      thumbnail?: {
-        url: string;
-        width: number;
-        height: number;
-      };
+    description?: string;
+    price: number;
+    compareAtPrice?: number;
+    sku?: string;
+    inventory: number;
+    isActive: boolean;
+    featured: boolean;
+    tags?: string[];
+    weight?: number;
+    createdAt: string;
+    updatedAt: string;
+    publishedAt: string;
+    images?: {
+      data: Array<{
+        id: number;
+        attributes: {
+          url: string;
+          name: string;
+          alternativeText?: string;
+          width?: number;
+          height?: number;
+          formats?: {
+            thumbnail?: {
+              url: string;
+              width: number;
+              height: number;
+            };
+          };
+        };
+      }>;
     };
-  }>;
-  category?: {
-    data: {
-      id: number;
-      attributes: {
-        name: string;
-        slug: string;
+    category?: {
+      data: {
+        id: number;
+        attributes: {
+          name: string;
+          slug: string;
+        };
       };
     };
   };
@@ -69,8 +75,15 @@ export interface Category {
 // Fetch all products
 export async function getProducts(): Promise<Product[]> {
   try {
+    console.log('Fetching products from:', `${STRAPI_URL}/api/products?populate=*`);
     const response = await fetch(`${STRAPI_URL}/api/products?populate=*`);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
     const data = await response.json();
+    console.log('Products API response:', data);
     return data.data || [];
   } catch (error) {
     console.error('Error fetching products:', error);
@@ -81,15 +94,20 @@ export async function getProducts(): Promise<Product[]> {
 // Fetch featured products
 export async function getFeaturedProducts(): Promise<Product[]> {
   try {
-    console.log('Fetching from:', `${STRAPI_URL}/api/products?populate=*`);
+    console.log('Fetching featured products from:', `${STRAPI_URL}/api/products?populate=*`);
     const response = await fetch(`${STRAPI_URL}/api/products?populate=*`);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
     const data = await response.json();
-    console.log('API Response:', JSON.stringify(data, null, 2));
+    console.log('Featured products API response:', data);
     const products = data.data || [];
     
     // Filter featured products on the client side
     const featuredProducts = products.filter((product: Product) => 
-      product.featured === true
+      product.attributes.featured === true
     );
     
     console.log('All products:', products);
@@ -106,6 +124,11 @@ export async function getFeaturedProducts(): Promise<Product[]> {
 export async function getProductsByCategory(categoryId: number): Promise<Product[]> {
   try {
     const response = await fetch(`${STRAPI_URL}/api/products?filters[category][id][$eq]=${categoryId}&populate=*`);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
     const data = await response.json();
     return data.data || [];
   } catch (error) {
@@ -118,6 +141,11 @@ export async function getProductsByCategory(categoryId: number): Promise<Product
 export async function getProduct(id: number): Promise<Product | null> {
   try {
     const response = await fetch(`${STRAPI_URL}/api/products/${id}?populate=*`);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
     const data = await response.json();
     return data.data || null;
   } catch (error) {
@@ -130,6 +158,11 @@ export async function getProduct(id: number): Promise<Product | null> {
 export async function getCategories(): Promise<Category[]> {
   try {
     const response = await fetch(`${STRAPI_URL}/api/categories?populate=*`);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
     const data = await response.json();
     return data.data || [];
   } catch (error) {
@@ -142,6 +175,11 @@ export async function getCategories(): Promise<Category[]> {
 export async function searchProducts(query: string): Promise<Product[]> {
   try {
     const response = await fetch(`${STRAPI_URL}/api/products?filters[$or][0][name][$containsi]=${query}&filters[$or][1][description][$containsi]=${query}&populate=*`);
+    
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
     const data = await response.json();
     return data.data || [];
   } catch (error) {

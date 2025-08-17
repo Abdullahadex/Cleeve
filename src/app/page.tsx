@@ -83,6 +83,9 @@ export default function Home() {
         getFeaturedProducts()
       ]);
       
+      console.log('Fetched all products:', allProducts);
+      console.log('Fetched featured products:', featured);
+      
       setProducts(allProducts);
       setFeaturedProducts(featured);
     } catch (error) {
@@ -277,28 +280,27 @@ export default function Home() {
             <p>Featured Products Count: {featuredProducts.length}</p>
             <p>All Products Count: {products.length}</p>
             <p>API URL: {process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}</p>
-            <p>First Product Images: {JSON.stringify(featuredProducts[0]?.images)}</p>
+            <p>First Product Images: {JSON.stringify(featuredProducts[0]?.attributes?.images)}</p>
           </div>
           {loading ? (
             <div className="loading">Loading products...</div>
           ) : featuredProducts.length > 0 ? (
             <div className="product-grid">
               {featuredProducts.map((product) => {
-  console.log('Product images data:', product.images);
-  console.log('First image object:', product.images?.[0]);
-  console.log('First image URL:', product.images?.[0]?.url);
+  console.log('Product data:', product);
+  console.log('Product images data:', product.attributes?.images);
   
   // Improved image URL construction
   let imageUrl = "/cleeve photos/cl(1).jpeg"; // fallback image
   
-  if (product.images && product.images.length > 0) {
-    const firstImage = product.images[0];
-    if (firstImage.url) {
+  if (product.attributes?.images?.data && product.attributes.images.data.length > 0) {
+    const firstImage = product.attributes.images.data[0];
+    if (firstImage.attributes?.url) {
       // Handle both relative and absolute URLs
-      if (firstImage.url.startsWith('http')) {
-        imageUrl = firstImage.url;
+      if (firstImage.attributes.url.startsWith('http')) {
+        imageUrl = firstImage.attributes.url;
       } else {
-        imageUrl = `http://localhost:1337${firstImage.url}`;
+        imageUrl = `http://localhost:1337${firstImage.attributes.url}`;
       }
     }
   }
@@ -309,7 +311,7 @@ export default function Home() {
     <div key={product.id} className="product-card">
       <Image
         src={imageUrl}
-        alt={product.name}
+        alt={product.attributes.name}
         className="product-image"
         width={300}
         height={300}
@@ -321,13 +323,13 @@ export default function Home() {
         }}
       />
                     <div className="product-info">
-                      <h3 className="product-name">{product.name}</h3>
-                      <p className="product-price">${product.price.toFixed(2)}</p>
+                      <h3 className="product-name">{product.attributes.name}</h3>
+                      <p className="product-price">${product.attributes.price.toFixed(2)}</p>
                       <button 
                         className="add-to-cart"
                         onClick={() => addToCart({ 
-                          name: product.name, 
-                          price: product.price, 
+                          name: product.attributes.name, 
+                          price: product.attributes.price, 
                           quantity: 1 
                         })}
                       >
@@ -336,8 +338,8 @@ export default function Home() {
                       <button 
                         className="quick-view"
                         onClick={() => handleQuickView(
-                          product.name, 
-                          product.price, 
+                          product.attributes.name, 
+                          product.attributes.price, 
                           imageUrl
                         )}
                       >
