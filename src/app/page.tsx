@@ -72,31 +72,34 @@ export default function Home() {
     setIsMobileNavOpen(prev => !prev);
   }, []);
 
-  // Fetch products from CMS - Production ready
-  const fetchProducts = useCallback(async () => {
-    try {
-      console.log('🚀 Starting to fetch products...');
-      setLoading(true);
-      
-      const featured = await getFeaturedProducts();
-      console.log('🎯 Featured products received:', featured);
-      
-      setFeaturedProducts(featured);
-      console.log('✅ Featured products state updated');
-    } catch (error) {
-      console.error('❌ Error fetching products:', error);
-    } finally {
-      setLoading(false);
-      console.log('🏁 Loading finished');
-    }
-  }, []);
+
+
+  // Fetch products only once on component mount
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        console.log('🚀 Starting to fetch products...');
+        setLoading(true);
+        
+        const featured = await getFeaturedProducts();
+        console.log('🎯 Featured products received:', featured);
+        
+        setFeaturedProducts(featured);
+        console.log('✅ Featured products state updated');
+      } catch (error) {
+        console.error('❌ Error fetching products:', error);
+      } finally {
+        setLoading(false);
+        console.log('🏁 Loading finished');
+      }
+    };
+
+    loadProducts();
+  }, []); // Empty dependency array - only run once
 
   useEffect(() => {
     // Initialize cart count on page load
     updateCartCount();
-    
-    // Fetch products from CMS
-    fetchProducts();
     
     let timeoutHandle: NodeJS.Timeout;
     const showSlides = () => {
@@ -126,7 +129,7 @@ export default function Home() {
     return () => {
       clearTimeout(timeoutHandle);
     };
-  }, [slideIndex, updateCartCount, fetchProducts]);
+  }, [slideIndex, updateCartCount]);
 
   useEffect(() => {
     // Add click handlers for dots
