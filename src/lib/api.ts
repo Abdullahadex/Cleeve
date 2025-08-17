@@ -79,7 +79,7 @@ export async function getFeaturedProducts(): Promise<Product[]> {
     console.log('Fetching from:', `${STRAPI_URL}/api/products?populate=*`);
     const response = await fetch(`${STRAPI_URL}/api/products?populate=*`);
     const data = await response.json();
-    console.log('API Response:', data);
+    console.log('API Response:', JSON.stringify(data, null, 2));
     const products = data.data || [];
     
     // Filter featured products on the client side
