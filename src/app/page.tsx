@@ -83,9 +83,6 @@ export default function Home() {
         getFeaturedProducts()
       ]);
       
-      console.log('Fetched all products:', allProducts);
-      console.log('Fetched featured products:', featured);
-      
       setProducts(allProducts);
       setFeaturedProducts(featured);
     } catch (error) {
@@ -274,27 +271,13 @@ export default function Home() {
 
         <section id="featured">
           <h2 className="category-title">Featured Essentials</h2>
-          <div style={{ padding: '1rem', background: '#f0f0f0', margin: '1rem 0' }}>
-            <p><strong>Debug Info:</strong></p>
-            <p>Loading: {loading ? 'Yes' : 'No'}</p>
-            <p>Featured Products Count: {featuredProducts.length}</p>
-            <p>All Products Count: {products.length}</p>
-            <p>API URL: {process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}</p>
-            <p>First Product Images: {JSON.stringify(featuredProducts[0]?.attributes?.images)}</p>
-            <p>First Product Image URL: {featuredProducts[0] ? getProductImageUrl(featuredProducts[0]) : 'No products'}</p>
-          </div>
           {loading ? (
             <div className="loading">Loading products...</div>
           ) : featuredProducts.length > 0 ? (
             <div className="product-grid">
               {featuredProducts.map((product) => {
-  console.log('Product data:', product);
-  console.log('Product images data:', product.attributes?.images);
-  
   // Use the helper function to get image URL
   const imageUrl = getProductImageUrl(product);
-  
-  console.log('Final image URL:', imageUrl);
   
   return (
     <div key={product.id} className="product-card">

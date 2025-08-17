@@ -75,7 +75,6 @@ export interface Category {
 // Fetch all products
 export async function getProducts(): Promise<Product[]> {
   try {
-    console.log('Fetching products from:', `${STRAPI_URL}/api/products?populate=*`);
     const response = await fetch(`${STRAPI_URL}/api/products?populate=*`);
     
     if (!response.ok) {
@@ -83,7 +82,6 @@ export async function getProducts(): Promise<Product[]> {
     }
     
     const data = await response.json();
-    console.log('Products API response:', data);
     return data.data || [];
   } catch (error) {
     console.error('Error fetching products:', error);
@@ -94,7 +92,6 @@ export async function getProducts(): Promise<Product[]> {
 // Fetch featured products
 export async function getFeaturedProducts(): Promise<Product[]> {
   try {
-    console.log('Fetching featured products from:', `${STRAPI_URL}/api/products?populate=*`);
     const response = await fetch(`${STRAPI_URL}/api/products?populate=*`);
     
     if (!response.ok) {
@@ -102,16 +99,12 @@ export async function getFeaturedProducts(): Promise<Product[]> {
     }
     
     const data = await response.json();
-    console.log('Featured products API response:', data);
     const products = data.data || [];
     
     // Filter featured products on the client side
     const featuredProducts = products.filter((product: Product) => 
       product.attributes.featured === true
     );
-    
-    console.log('All products:', products);
-    console.log('Featured products:', featuredProducts);
     
     return featuredProducts;
   } catch (error) {
