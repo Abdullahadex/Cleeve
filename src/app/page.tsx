@@ -291,18 +291,21 @@ export default function Home() {
   const imageUrl = getProductImageUrl(product);
   
   return (
-    <div key={product.id} className="product-card">
-      <Image
-        src={imageUrl}
-        alt={product.name}
-        className="product-image"
-        width={300}
-        height={300}
+                      <div key={product.id} className="product-card">
+                    <Image
+                      key={`${product.id}-${product.images?.[0]?.url || 'no-image'}`}
+                      src={imageUrl}
+                      alt={product.name}
+                      className="product-image"
+                      width={300}
+                      height={300}
         onError={(e) => {
           console.error('Image failed to load:', imageUrl);
           // Fallback to default image on error
           const target = e.target as HTMLImageElement;
           target.src = "/cleeve photos/cl(1).jpeg";
+          // Prevent the error from bubbling up and causing re-renders
+          e.preventDefault();
         }}
       />
                     <div className="product-info">

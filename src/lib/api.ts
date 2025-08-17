@@ -210,12 +210,23 @@ export function getProductImageUrl(product: Product): string {
   }
   
   const firstImage = product.images[0];
+  
+  // Check if we're in production (Vercel) and if the URL is localhost
+  const isProduction = typeof window !== 'undefined' && window.location.hostname !== 'localhost';
   const baseUrl = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
   
   if (firstImage?.url) {
     if (firstImage.url.startsWith('http')) {
+      // If it's already a full URL, use it
       return firstImage.url;
     }
+    
+    // If we're in production and the base URL is localhost, use fallback
+    if (isProduction && baseUrl.includes('localhost')) {
+      console.warn('Strapi is running on localhost but we\'re in production. Using fallback image.');
+      return '/cleeve photos/cl(1).jpeg';
+    }
+    
     return `${baseUrl}${firstImage.url}`;
   }
   
