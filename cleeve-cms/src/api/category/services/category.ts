@@ -24,7 +24,7 @@ export default factories.createCoreService('api::category.category', ({ strapi }
       sort: { name: 'asc' }
     });
 
-    return categories.filter(category => category.products?.length > 0);
+    return categories.filter(category => (category as any).products?.length > 0);
   },
 
   // Custom service method to get category breadcrumbs
@@ -38,11 +38,11 @@ export default factories.createCoreService('api::category.category', ({ strapi }
       breadcrumbs.unshift({
         id: currentCategory.id,
         name: currentCategory.name,
-        slug: currentCategory.slug
+        slug: (currentCategory as any).slug
       });
       
-      if (currentCategory.parent) {
-        currentCategory = await strapi.entityService.findOne('api::category.category', currentCategory.parent.id, {
+      if ((currentCategory as any).parent) {
+        currentCategory = await strapi.entityService.findOne('api::category.category', (currentCategory as any).parent.id, {
           populate: ['parent']
         });
       } else {

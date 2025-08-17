@@ -18,7 +18,7 @@ export default factories.createCoreController('api::category.category', ({ strap
 
     const categoriesWithCount = categories.map(category => ({
       ...category,
-      productCount: category.products?.length || 0
+      productCount: (category as any).products?.length || 0
     }));
 
     return { data: categoriesWithCount };
@@ -29,13 +29,15 @@ export default factories.createCoreController('api::category.category', ({ strap
     const categories = await strapi.entityService.findMany('api::category.category', {
       filters: {
         isActive: true,
-        publishedAt: { $notNull: true },
-        parent: { $null: true } // Only root categories
+        publishedAt: { $notNull: true }
       },
       populate: ['image', 'children', 'children.image'],
       sort: { name: 'asc' }
     });
 
-    return { data: categories };
+    // Filter root categories manually
+    const rootCategories = categories.filter(category => !(category as any).parent);
+
+    return { data: rootCategories };
   }
 }));
