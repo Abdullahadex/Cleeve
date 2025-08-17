@@ -72,7 +72,7 @@ export default function Home() {
     setIsMobileNavOpen(prev => !prev);
   }, []);
 
-  // Fetch products from CMS
+  // Fetch products from CMS - Production ready
   const fetchProducts = useCallback(async () => {
     try {
       setLoading(true);
