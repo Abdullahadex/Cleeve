@@ -48,8 +48,8 @@ export default function Home() {
     const items = getCartItems();
     items.push(item);
     setCartItems(items);
-    updateCartCount();
-  }, [getCartItems, setCartItems, updateCartCount]);
+    setCartCount(items.length);
+  }, [getCartItems, setCartItems]);
 
   const handleQuickView = useCallback((name: string, price: number, image: string) => {
     setQuickViewProduct({
