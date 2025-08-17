@@ -33,6 +33,31 @@ body {
   backdrop-filter: blur(6px);
 }
 
+.nav > *:first-child {
+  /* Logo - keep it on the left */
+  flex-shrink: 0;
+}
+
+.nav > *:last-child {
+  /* Cart icon - keep it on the right */
+  flex-shrink: 0;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  margin-right: 20px;
+}
+
+.search-bar {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 2px dashed #b0b0b0;
+  margin-right: 15px;
+  min-width: 200px;
+}
+
 .social-link.instagram {
   margin-left: 12px;
   font-size: 22px;
@@ -67,16 +92,9 @@ body {
   border-radius: 12px;
 }
 
-.nav-links {
-  display: flex;
-  gap: 30px;
-  align-items: center;
-}
-
 .nav-links a {
   text-decoration: none;
   color: #555;
-  margin-left: 30px;
   font-size: 18px;
   transition: all 0.3s;
   position: relative;
@@ -501,11 +519,7 @@ footer {
   opacity: 1;
 }
 
-.search-bar {
-  padding: 5px;
-  border-radius: 5px;
-  border: 2px dashed #b0b0b0;
-}
+
 
 .cart-icon {
   font-size: 1.2em;
