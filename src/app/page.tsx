@@ -292,7 +292,7 @@ export default function Home() {
     <div key={product.id} className="product-card">
       <Image
         src={imageUrl}
-        alt={product.attributes.name}
+        alt={product.name}
         className="product-image"
         width={300}
         height={300}
